@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper,twoside]{article}
+\usepackage[utf8]{inputenc}  % pravilno razpoznavanje unicode znakov
+
+\usepackage[slovene]{babel}  % slovenščina
+\usepackage[T1]{fontenc}     % naprednejše kodiranje fonta
+\usepackage{amsmath,amssymb,amsfonts,amsthm} % matematični paketi
+\usepackage[dvipsnames,usenames]{color} % barve
+\usepackage{graphicx}     % za slike
+\usepackage{emptypage}    % prazne strani so neoštevilčene, ampak so štete
+\usepackage{tikz}
+
+% oblika strani
+\usepackage[
+  top=3cm,
+  bottom=3cm,
+  inner=3.5cm,      % margini za dvostransko tiskanje
+  outer=2.5cm,
+  footskip=40pt     % pozicija številke strani
+]{geometry}
+
+% VEČ ZANIMIVIH PAKETOV
+% \usepackage{array}      % več možnosti za tabele
+% \usepackage[list=true,listformat=simple]{subcaption}  % več kot ena slika na figure, omogoči slika 1a, slika 1b
+% \usepackage[all]{xy}    % diagrami
+% \usepackage{doi}        % za clickable DOI entrye v bibliografiji
+% \usepackage{enumerate}     % več možnosti za sezname
+
+% Za barvanje source kode
+% \usepackage{minted}
+% \renewcommand\listingscaption{Program}
+
+% Za pisanje psevdokode
+% \usepackage{algpseudocode}  % za psevdokodo
+% \usepackage{algorithm}
+% \floatname{algorithm}{Algoritem}
+% \renewcommand{\listalgorithmname}{Kazalo algoritmov}
+
+% DRUGI TVOJI PAKETI:
+% tukaj
+
+\setlength{\overfullrule}{50pt} % označi predlogo vrstico
+\pagestyle{plain}               % samo številka strani na dnu, nobene glave / noge
+
+% ukazi za matematična okolja
+\theoremstyle{definition} % tekst napisan pokončno
+\newtheorem{definicija}{Definicija}[section]
+\newtheorem{primer}[definicija]{Primer}
+\newtheorem{opomba}[definicija]{Opomba}
+\newtheorem{aksiom}{Aksiom}
+
+\theoremstyle{plain} % tekst napisan poševno
+\newtheorem{lema}[definicija]{Lema}
+\newtheorem{izrek}[definicija]{Izrek}
+\newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{posledica}[definicija]{Posledica}
+
+\numberwithin{equation}{section}  % števec za enačbe zgleda kot (2.7) in se resetira v vsakem poglavju
+
+% Matematični ukazi
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+%\renewcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+
+% \DeclareMathOperator{\tr}{tr}  % morda potrebuješ operator za sled ali kaj drugega?
+
+% bold matematika znotraj \textbf{ }, tudi v naslovih, kot \omega spodaj
+%\makeatletter \g@addto@macro\bfseries{\boldmath} \makeatother
+%
+%% Poimenuj kazalo slik kot ``Kazalo slik'' in ne ``Slike''
+%\addto\captionsslovene{
+%  \renewcommand{\listfigurename}{Kazalo slik}%
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%           DOCUMENT           %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty} % ampak na prvi strani ni številke
+
+
+
+\begin{titlepage}\centering
+\noindent{\large
+Univerza v Ljubljani\\[1mm]
+Fakulteta za matematiko in fiziko\\[5mm]}
+\vspace*{\fill}
+{\LARGE Geometrijsko zvezna gibanja togih teles} \\[1cm]
+\large Matic Oskar Hajšen  in  Eva Zmazek
+\vspace*{\fill}
+\vfill
+\noindent{\large Ljubljana, 2019}
+\end{titlepage}
+
+\cleardoublepage
+
+
+\section{Uvod}
+
+\subsection{Definicija}
+
+Definicija
+
+\end{document}
