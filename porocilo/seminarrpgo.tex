@@ -62,6 +62,7 @@
 \newcommand{\Z}{\mathbb Z}
 %\renewcommand{\C}{\mathbb C}
 \newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb H}
 
 % \DeclareMathOperator{\tr}{tr}  % morda potrebuješ operator za sled ali kaj drugega?
 
@@ -103,6 +104,74 @@ Fakulteta za matematiko in fiziko\\[5mm]}
 
 \subsection{Definicija}
 
-Definicija
+Imamo $2$ koordinatna sistema v $\R^3$:
+\begin{itemize}
+\item fiksen koordinatni sistem $E^3$
+\item gibajoč se koordinatni sistem $\hat{E}^3$
+\end{itemize}
+Točke lahko predstavimo v enem ali drugem.\\
+
+\noindent Označimp s $\underline{p}$ točko glede na fiksen koordinatni sistem $E^3$, s $\underline{\hat{p}}$ pa glede na $\hat{E}^3$. Potrebujemo koordinatno transformacijo
+$$\hat{E}^3 \to E^3$$
+$$\underline{\hat{p}} \mapsto \underline{p} = \underline{c} + R \underline{\hat{p}}$$
+
+\noindent $\underline{c}$ predstavlja položaj izhodišča koordinatnega sistema $\hat{E}^3$ v koordinatni sistem $E^3$, $R$ pa je \textbf{rotacijska matrika}, ki opisuje rotacijo gibajočega se koordinatnega sistema. \\
+
+\noindent Kadar je $\underline{c} = \underline{c}(t)$ in $R=R(t)$, govorimo o gibanju togega telesa:
+$$\hat{E}^3 \times I \to E^3$$
+$$(\underline{\hat{p}},t) \mapsto \underline{c}(t) + R(t) \underline{\hat{p}} =: \underline{p}(t)$$
+$\underline{p}(t)$ je trajektorija točke $\underline{\hat{p}}$ \\
+
+\noindent Če je $\underline{c}(t) = (0,0,0)$, potem trajektorija poljubne točke $\underline{\hat{p}}$ leži na sferi z radijem $||\underline{\hat{p}}||$. \\
+
+\noindent Rotacijski del gibanja $R(t)$ opisuje gibanje po enotski sferi, zato se imenuje tudi \textbf{sferični del gibanja togega telesa}. Problem je konstrukcija matrike $R$, ki mora biti ortogonalna. ($R R^T = R^T R = I$, $\det R = 1$). \\
+
+\noindent Pri opiisovanju rotacij si lahko pomagamo s \textbf{kvaternioni}. Prostor kvaternionov $\H$ je $4$-dimenzionalni vektorski prostor s standardno bazo
+$$ \underline{1} = (1, (0,0,0)^T) $$
+$$ \underline{i} = (0,(1,0,0)^T) $$
+$$ \underline{j} = (0,(0,1,0)^T) $$
+$$ \underline{k} = (0,(0,0,1)^T) $$
+
+\noindent Vsak kvaternion $\mathcal{A}$ lahko zapišemo kot:
+$$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underline{a} = (a_1,a_2,a_3)^T \text{ vektorski del}$$
+
+$$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
+$$\mathcal{A} \cdot \mathcal{B}  = (a_0 b_0 - \underline{a} \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b}$$
+
+\begin{definicija}
+Preslikava $\chi : \H \backslash \{0\} \to SO_3$ oblike
+
+$$ Q = (q_0,(q_1,q_2,q_3)^T)$$
+
+$$Q  \mapsto \frac{1}{q_0^2 + q_1^2 + q_2^2 + q_3^2}
+\left[
+\begin{tabular}{c c c}
+$q_0^2 + q_1^2 - q_2^2 - q_3^2$ & $2(q_1 q_2 - q_0 q_3)$ & $2(q_1 q_3 + q_0 q_2)$ \\
+& & \\
+$2(q_1 q_2 + q_0 q_3)$ & $q_0^2 - q_1^2 + q_2^2 - q_3^2$ & $2(q_2 q_3 - q_0 q_1)$ \\
+& & \\
+$2(q_1 q_3 - q_0 q_2)$ & $2(q_2 q_3 + q_0 q_2)$ & $q_0^2 - q_1^2 - q_2^2 + q_3^2$
+\end{tabular}
+\right]
+$$
+\\
+se imenuje \textbf{kinematična preslikava}.
+\end{definicija}
+
+\noindent Matika $\chi(Q)$ je rotacijska matrika.
+
+\noindent Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
+$$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
+$$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$$
+
+\noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$.
+
+\noindent Z uporabo konematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje.
+
+\noindent Izberemo kontrolne kvaternione $a_0,a_1,\dots,a_n$
+$$Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$$
+$$\chi(Q(t)) = R(t)$$
+
+\noindent Izberemo $\underline{c}(t) = \frac{w(t)}{||Q(t)||^2}$.
 
 \end{document}
