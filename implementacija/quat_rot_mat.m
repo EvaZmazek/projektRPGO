@@ -3,10 +3,8 @@ function H = quat_rot_mat(Q)
 %Q          qvaternion
 %
 %output:
-%H          rotacijska matrika za sferi�no gibanje
+%H          rotacijska matrika za sfericno gibanje
 %           (hi v zapiskih)
-
-% NEKJE TU NAJ BI BILA NAPAKA ZA y-OS
 
 H = zeros(3,3);
 h = sum(Q.^2);
