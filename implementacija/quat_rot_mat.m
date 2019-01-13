@@ -27,7 +27,6 @@ else
     H = 1/h.*H;  
 end
 
-
 end
 
 

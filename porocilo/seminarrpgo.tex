@@ -36,7 +36,17 @@
 % \renewcommand{\listalgorithmname}{Kazalo algoritmov}
 
 % DRUGI TVOJI PAKETI:
-% tukaj
+\usepackage[numbered,framed]{matlab-prettifier}
+
+\let\ph\mlplaceholder % shorter macro
+\lstMakeShortInline"
+
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
 
 \setlength{\overfullrule}{50pt} % označi predlogo vrstico
 \pagestyle{plain}               % samo številka strani na dnu, nobene glave / noge
@@ -102,6 +112,10 @@ Fakulteta za matematiko in fiziko\\[5mm]}
 
 \section{Uvod}
 
+\tableofcontents
+
+\lstlistoflistings
+
 \subsection{Definicija}
 
 Imamo $2$ koordinatna sistema v $\R^3$:
@@ -139,6 +153,7 @@ $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + 
 $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
 
 \begin{definicija}
+\label{definicijarotacije}
 Preslikava $\chi : \H \backslash \{0\} \to SO_3$ oblike
 
 $$Q  \mapsto \frac{1}{q_0^2 + q_1^2 + q_2^2 + q_3^2}
@@ -173,5 +188,82 @@ $$Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$$
 $$\chi(Q(t)) = R(t)$$
 
 \noindent Izberemo $\underline{c}(t) = \frac{w(t)}{||Q(t)||^2}$.
+
+\section{Implementacija}
+
+Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva jih najprej prevedla iz seznama v vektorsko obliko:
+
+\begin{lstlisting}
+function Q = array2quat(a, b, c, d)
+%input:
+%a, b, c, d     komponente   
+%output:
+%Q              kvaternion
+
+Q = [a, b, c, d];
+end
+\end{lstlisting}
+
+\noindent S funcijo $quad\_vec(Q)$ pridobima vektorski del kvaterniona.
+
+\begin{lstlisting}
+function v = quat_vec(Q)
+%input:
+%Q              kvaternion (q0, q1, q2, q3)
+%output:
+%v              vektorski komponenta Q-ja, (q1, q2, q3)
+
+
+v = [Q(2) Q(3) Q(4)];
+end
+
+\end{lstlisting}
+
+\noindent S funcijo $quat\_rot\_mat$ oblikujeva rotacijsko matrako iz definicije \ref{definicijarotacije}:
+
+\begin{lstlisting}
+function H = quat_rot_mat(Q)
+%input:
+%Q          kvaternion
+%
+%output:
+%H          rotacijska matrika za sfericno gibanje
+%           (hi v zapiskih)
+
+H = zeros(3,3);
+h = sum(Q.^2);
+
+if h == 0
+    H = eye(3,3);
+else
+    H(1,1) = Q(1)^2+Q(2)^2 - Q(3)^2 - Q(4)^2;
+    H(1,2) = 2*(Q(2)*Q(3) - Q(1)*Q(4));
+    H(1,3) = 2*(Q(2)*Q(4) + Q(1)*Q(3));
+
+    H(2,1) = 2*(Q(2)*Q(3) + Q(1)*Q(4));
+    H(2,2) = Q(1)^2 - Q(2)^2 + Q(3)^2 - Q(4)^2;
+    H(2,3) = 2*(Q(3)*Q(4) - Q(1)*Q(2));
+
+    H(3,1) = 2*(Q(2)*Q(4) - Q(1)*Q(3));
+    H(3,2) = 2*(Q(3)*Q(4) + Q(1)*Q(2));
+    H(3,3) = Q(1)^2 - Q(2)^2 - Q(3)^2 + Q(4)^2;
+
+    H = 1/h.*H;  
+end
+
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {For educational purposes}]
+% example of while loop using placeholders
+while "\ph{condition}"
+  if "\ph{something-bad-happens}"
+    break
+  else
+    % do something useful
+  end
+  % do more things
+end
+\end{lstlisting}
 
 \end{document}
