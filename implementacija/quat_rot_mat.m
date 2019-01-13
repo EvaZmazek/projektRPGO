@@ -1,6 +1,6 @@
 function H = quat_rot_mat(Q)
 %input:
-%Q          qvaternion
+%Q          kvaternion
 %
 %output:
 %H          rotacijska matrika za sfericno gibanje
