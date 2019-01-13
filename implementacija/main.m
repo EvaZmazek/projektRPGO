@@ -12,15 +12,15 @@ K = kocka_vek(x0,y0,z0, T0);
 % Q2 = angle2quat(pi/2, pi/4, 0);
 % Q3 = angle2quat(pi/2, pi/4, pi/3);
 
-% KVATERNIONI ZA OBRAÈANJE KOCKE
+% KVATERNIONI ZA OBRACANJE KOCKE
 Q0 = kot_v_kvat(0, [1,0,0]);
 Q1 = kot_v_kvat(pi/4, [1,0,0]);
 Q2 = kot_v_kvat(-pi/2, [0,0,1]);
 Q3 = kot_v_kvat(3*pi/4, [1,0,-1]);
-% to vse dela, èe ne obraèamo okoli y-osi
+% to vse dela, ce ne obracamo okoli y-osi
 
-% PRIMER: pri temle naj bi šel po "dolgi poti", vendar se mi zdi
-%  da je brez popravka boljše (glej funkcijo "slerp")
+% PRIMER: pri temle naj bi sel po "dolgi poti", vendar se mi zdi
+%  da je brez popravka boljse (glej funkcijo "slerp")
 % Q0 = kot_v_kvat(0, [1,0,0]);
 % Q1 = kot_v_kvat(pi/4, [1,0,0]);
 % Q2 = kot_v_kvat(-pi/2, [0,0,1]);
@@ -42,8 +42,8 @@ c = bezier(B2,t);
 
 
 
-% RISANJE SFERIÈNEGA PREMIKANJA 
-% to bova najbrž skombinirala s translacijo v eno funkcijo
+% RISANJE SFERICNEGA PREMIKANJA 
+% to bova najbrz skombinirala s translacijo v eno funkcijo
 H = cell(n,1);
 P = cell(n,1);
 hold on
@@ -93,4 +93,4 @@ z = (H*z0')';
 T = T0+c(1,:);
 risi_kocko(kocka_vek(x, y, z, T),'y');
 
-%plot_kontrolne_kocke(x0,y0,z0,T0, B,c, 'y','c','g',0) % dodati še translacijo
+%plot_kontrolne_kocke(x0,y0,z0,T0, B,c, 'y','c','g',0) % dodati ce translacijo
