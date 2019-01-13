@@ -1,15 +1,15 @@
 function D = sdecasteljau(Q,t)
 % Opis:
 %   decasteljau  vrne  shemo  de  Casteljaujevega  postopka  za dan
-%   seznam  koordinat b pri  danem  parametru t
+%   seznam  koordinat Q pri  danem  parametru t
 %
 % Definicija:
-%   D = decasteljau(b,t)
+%   D = decasteljau(Q,t)
 %
 % Vhodna  podatka:
-%   Q   seznam  koordinat  kontrolnih  toèk  Bezierjeve  krivulje
+%   Q   seznam  koordinat  kontrolnih  tock  Bezierjeve  krivulje
 %       stopnje n
-%   t   parameter , pri  katerem  raèunamo  koordinato
+%   t   parameter , pri  katerem  racunamo  koordinato
 %       Bezierjeve  krivulje
 %
 % Izhodni  podatek:
