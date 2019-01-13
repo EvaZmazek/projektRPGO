@@ -17,5 +17,9 @@ b_v = quat_vec(b);
 
 c[1] = a_s * b_s - a_v * b_v;
 c_v = a_s * b_v + b_s * a_v + cross(a_v,b_v);
+
+c[2] = c_v[1];
+c[3] = c_v[2];
+c[4] = c_v[3];
 end
 
