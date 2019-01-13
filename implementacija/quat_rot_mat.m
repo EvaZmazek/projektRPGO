@@ -10,7 +10,7 @@ H = zeros(3,3);
 h = sum(Q.^2);
 
 if h == 0
-    H = eye(3,3); % ne vem, �e je to prav
+    H = eye(3,3); % ne vem, ce je to prav
 else
     H(1,1) = Q(1)^2+Q(2)^2 - Q(3)^2 - Q(4)^2;
     H(1,2) = 2*(Q(2)*Q(3) - Q(1)*Q(4));
