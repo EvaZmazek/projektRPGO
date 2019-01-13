@@ -1,6 +1,6 @@
 function b = bezier (B,t)
 % Opis :
-% bezier vrne točke na Bezierjevi krivulji pri danih
+% bezier vrne tocke na Bezierjevi krivulji pri danih
 % parametrih
 %
 % Definicija :
@@ -8,14 +8,14 @@ function b = bezier (B,t)
 %
 % Vhodna podatka :
 % B     matrika velikosti n+1 x d, ki predstavlja kontrolne
-%       točke Bezierjeve krivulje stopnje n v
+%       tocke Bezierjeve krivulje stopnje n v
 %       d- dimenzionalnem prostoru ,
-% t     seznam parametrov dolžine k, pri katerih računamo
+% t     seznam parametrov dolzine k, pri katerih racunamo
 %       vrednost Bezierjeve krivulje
 %
 % Izhodni podatek :
 % b     matrika velikosti k x d, kjer i-ta vrstica
-%       predstavlja točko na Bezierjevi krivulji pri
+%       predstavlja tocko na Bezierjevi krivulji pri
 %       parametru iz t na i- tem mestu
 
 [n,d] = size(B);

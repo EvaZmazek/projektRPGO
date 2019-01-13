@@ -368,21 +368,29 @@ $$ q_0 : q_1 : q_2 : q_3 $$
 
 \noindent Ker $q_0,q_1,q_2,q_3$ niso hkrati enaki $0$, bo vsaj eno izmed zgornjih razmerij različno od $0 : 0 : 0 : 0$. Tisto razmerje nato uporabimo kot razmerje $ q_0 : q_1 : q_2 : q_3 $. Skupaj z enakostjo $q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$ nato izračunamo kvaternion $Q=(q_0,q_1,q_2,q_3)^T$ (bolj natančno sta v množici rešitev dva antipodna kvaterniona).
 \subsection{Bezierjeve krivulje}
-\noindent Z uporabo kinematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje.
-
-\noindent Izberemo kontrolne kvaternione $Q_0,Q_1,\dots,Q_n$
+\noindent Z uporabo kinematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje. Izberemo kontrolne kvaternione $Q_0,Q_1,\dots,Q_n$.
 $$Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$$
+\noindent Bezierjeva krivulja $Q(t)$ v času $t$ opiše kvaternion, ki mu priredimo rotacijo $R(t)$:
 $$\chi(Q(t)) = R(t)$$
 
-\noindent Izberemo $\underline{c}(t) = \frac{w(t)}{||Q(t)||^2}$.
+\noindent Rotacija, ki je določena z Bezierjevo krivuljo $Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$ stopnje $n$, je sferično razionalno gibanje stopnje $2n$. \\
+
+\noindent Gibanje koordinatnega izhodišča zapišemo v obliki
+$$\underline{c}(t) = \frac{w(t)}{||Q(t)||^2};~ w(t) := (w_1(t), w_2(t),w_3(t)).$$
+
+\noindent 
+
+
+\newpage
 
 \section{Implementacija}
 
-Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva jih najprej prevedla iz seznama v vektorsko obliko:
+\subsection{Kvaternioni}
+Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva na kvaternionih definirala naslednje funkcije:
 
-
-\begin{lstlisting}
+\begin{lstlisting}[caption = {array2quat}]
 function Q = array2quat(a, b, c, d)
+%ARRAY2QUAT prejme 4 parametre, ki jih pretvori v kvaternion (vektorsko obliko)
 %input:
 %a, b, c, d     komponente   
 %output:
@@ -392,31 +400,86 @@ Q = [a, b, c, d];
 end
 \end{lstlisting}
 
-\noindent S funcijo $quad\_vec(Q)$ pridobima vektorski del kvaterniona.
-
-\begin{lstlisting}
+\begin{lstlisting}[caption = {quat\_vec}]
 function v = quat_vec(Q)
+%QAUD_VEC poda vektorski del kvaterniona Q
 %input:
 %Q              kvaternion (q0, q1, q2, q3)
 %output:
 %v              vektorski komponenta Q-ja, (q1, q2, q3)
 
-
 v = [Q(2) Q(3) Q(4)];
 end
-
 \end{lstlisting}
 
-\noindent S funcijo $quat\_rot\_mat$ oblikujeva rotacijsko matrako iz definicije \ref{definicijarotacije}:
+\begin{lstlisting}[caption = {quatmultiply}]
+function c = quatmultiply(a,b)
+%QUATMULTIPLY izracuna produkt dveh kvaternionov, kot je opisano v clanku
+%
+% Input:
+% a ... prvi kvaternion
+% b ... drugi kvaternion
+%
+% Output:
+% c ... produkt (nov kvaternion)
 
-\begin{lstlisting}
+c = zeros(1,4);
+a_s = a(1);
+b_s = b(1);
+
+a_v = quat_vec(a);
+b_v = quat_vec(b);
+
+c(1) = a_s * b_s - a_v * b_v';
+c_v = a_s * b_v + b_s * a_v + cross(a_v,b_v);
+
+c(2) = c_v(1);
+c(3) = c_v(2);
+c(4) = c_v(3);
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {conj\_quat}]
+function Q = conj_quat(q)
+%CONJ_QUAT vrne konjugirano vrednost podanega kvaterniona q
+%input:
+%q              kvaternion  
+%output:
+%Q              konjugiran qvaternion
+
+Q = [q(1), -q(2:4)];
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {quat\_exp}]
+function e = quat_exp(q, t)
+%QUAT_EXP vrne potenco z osnovo q (kvaternion) in eksponentom t
+%input:
+% q             kvaternion [a, b, c, d]
+% t             eksponent
+%output:
+% e             rezultat q^t
+
+if t==-1
+    e = conj_quat(q)/norm(q);
+else
+    a = q(1);
+    v = quat_vec(q);
+    theta = acos(a/norm(q));
+    n = v/norm(v);
+
+    e = norm(q)^t*[cos(t*theta), n*sin(t*theta)];
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {quat\_rot\_mat}]
 function H = quat_rot_mat(Q)
+%QUAT_ROT_MAT oblikuje rotacijsko matriko, prirejeno kvaternionu Q
 %input:
 %Q          kvaternion
 %
 %output:
 %H          rotacijska matrika za sfericno gibanje
-%           (hi v zapiskih)
 
 H = zeros(3,3);
 h = sum(Q.^2);
@@ -442,6 +505,107 @@ end
 end
 \end{lstlisting}
 
+\subsection{Kocka}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+
+\subsection{Razvrsti}
+
+\begin{lstlisting}[caption = {}]
+function b = bezier (B,t)
+% Opis :
+% bezier vrne tocke na Bezierjevi krivulji pri danih
+% parametrih
+%
+% Definicija :
+% b = bezier (B,t)
+%
+% Vhodna podatka :
+% B     matrika velikosti n+1 x d, ki predstavlja kontrolne
+%       tocke Bezierjeve krivulje stopnje n v
+%       d- dimenzionalnem prostoru ,
+% t     seznam parametrov dolzine k, pri katerih racunamo
+%       vrednost Bezierjeve krivulje
+%
+% Izhodni podatek :
+% b     matrika velikosti k x d, kjer i-ta vrstica
+%       predstavlja tocko na Bezierjevi krivulji pri
+%       parametru iz t na i- tem mestu
+
+[n,d] = size(B);
+k = length(t);
+b = zeros(k,d);
+
+for i=1:k
+    for j=1:d
+        D = decasteljau(B(:,j)',t(i));
+        b(i,j) = D(1,n);
+    end
+end
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
+\noindent Ker sva rotacijo želela izraziti s kotom $\phi$ in osjo $\vec{r}$, sva definirala funkcijo, ki kot $\phi$ in enotski vektor $e$, ki leži na osi $r$, pretvori v ustrezen kvaternion $Q$.
+
+\begin{lstlisting}[caption = {For educational purposes}]
+function r = kot_v_kvat(fi, e)
+%input:
+% fi            kot
+% e             vektor osi
+%output:
+% Q             kvaternion
+%
+% sprejme kot fi in os e ter vrne kvaternion, ki predstavlja rotacijo 
+% za kot fi okoli osi e
+
+e = e/norm(e);
+r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
+end
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
 \begin{lstlisting}[caption = {For educational purposes}]
 % example of while loop using placeholders
 while "\ph{condition}"
@@ -453,5 +617,7 @@ while "\ph{condition}"
   % do more things
 end
 \end{lstlisting}
+
+
 
 \end{document}
