@@ -767,9 +767,120 @@ v = quatmultiply(q, quatmultiply([0 vec], conj_quat(q)));
 end
 \end{lstlisting}
 
+\begin{lstlisting}[caption = {sbezier}]
+function b = sbezier(Q,t)
+% Opis:
+%   bezier  vrne  tocke  na  Bezierjevi  krivulji  pri  danih
+%   parametrih
+%
+% Definicija:
+%   b = bezier(B,t)
+%
+% Vhodna  podatka:
+%   Q   matrika  velikosti n+1 x d, ki  predstavlja  kontrolne
+%       tocke  Bezierjeve  krivulje  stopnje n v
+%       d-dimenzionalnem  prostoru ,
+%   t   seznam  parametrov  dolzine k, pri  katerih  racunamo
+%       vrednost  Bezierjeve  krivulje
+%
+% Izhodni  podatek:
+%   b   matrika  velikosti k x d, kjer i-ta  vrstica
+%       predstavlja  tocko  na  Bezierjevi  krivulji  pri
+%       parametru  iz t na i-tem  mestu
+
+%[N, d] = size(B);
+%n = N-1;
+k = length(t);
+
+b = cell(k,1);
+
+for K = 1:k
+    decast = sdecasteljau(Q,t(K));
+    b{K} = decast(1,end);
+end
+b;
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption = {sdecasteljau}]
+function D = sdecasteljau(Q,t)
+% Opis:
+%   decasteljau  vrne  shemo  de  Casteljaujevega  postopka  za dan
+%   seznam  koordinat Q pri  danem  parametru t
+%
+% Definicija:
+%   D = decasteljau(Q,t)
+%
+% Vhodna  podatka:
+%   Q   seznam  koordinat  kontrolnih  tock  Bezierjeve  krivulje
+%       stopnje n
+%   t   parameter , pri  katerem  racunamo  koordinato
+%       Bezierjeve  krivulje
+%
+% Izhodni  podatek:
+%   D   tabela  velikosti n+1 x n+1, ki  predstavlja  de
+%       Casteljaujevo  shemo  za  koordinate b pri  parametru t
+%       (element  na  mestu (1,n+1) je  koordinata  Bezierjeve
+%       krivulje  pri  parametru t, elementi  na  mestih (i,j)
+%       za i > n-j+2 so NaN)
+
+[n,m] = size(Q);
+n = n-1;
+D = cell(n+1, n+1);
+
+
+for i = 1:(n+1)
+    D{i,1} = Q(i,:);
+end
+for j=2:(n+1)
+    for i=1:(n+2-j)
+        D{i,j} = slerp(D{i,j-1},D{i+1,j-1},t);
+    end
+end
+end
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption = {slerp}]
+function Q = slerp(Q1, Q2, t)
+%input:
+% Q1, Q2            kvaterniona
+% t                 parameter v [0,1]
+%output:
+% Q                 rezultat slerp-a med Q1 in Q2 na mestu t
+%To je sfericna linearna interpolacija, ki naj bi zamenjala
+%navadno v de Casteljauju.
+% https://en.wikipedia.org/wiki/Slerp
+
+if t == 0
+    Q = Q1;
+else
+    if t == 1
+        Q = Q2;
+    else
+%         q = quatmultiply(Q1,Q2);
+%         if q(1) <= 0 
+%             display('dolga pot')
+%             display(q)
+%             [r1,r2,r3] = quat2angle(q)
+%             %Q1 = -Q1; %tako naj bi izbrala krajso pot, se mi zdi 
+%         end
+        Q = quatmultiply(Q1, quat_exp(quatmultiply(quat_exp(Q1,-1),Q2),t));
+    end
+end
+end
+\end{lstlisting}
+
+
 \begin{lstlisting}[caption = {}]
 
 \end{lstlisting}
+
+
+\begin{lstlisting}[caption = {}]
+
+\end{lstlisting}
+
 
 \begin{lstlisting}[caption = {}]
 
@@ -871,7 +982,6 @@ e = e/norm(e);
 r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
 end
 \end{lstlisting}
-
 
 
 

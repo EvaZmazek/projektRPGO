@@ -4,7 +4,7 @@ function Q = slerp(Q1, Q2, t)
 % t                 parameter v [0,1]
 %output:
 % Q                 rezultat slerp-a med Q1 in Q2 na mestu t
-%To je sferièna linearna interpolacija, ki naj bi zamenjala
+%To je sfericna linearna interpolacija, ki naj bi zamenjala
 %navadno v de Casteljauju.
 % https://en.wikipedia.org/wiki/Slerp
 
@@ -19,7 +19,7 @@ else
 %             display('dolga pot')
 %             display(q)
 %             [r1,r2,r3] = quat2angle(q)
-%             %Q1 = -Q1; %tako naj bi izbrala krajšo pot, se mi zdi 
+%             %Q1 = -Q1; %tako naj bi izbrala krajso pot, se mi zdi 
 %         end
         Q = quatmultiply(Q1, quat_exp(quatmultiply(quat_exp(Q1,-1),Q2),t));
     end
