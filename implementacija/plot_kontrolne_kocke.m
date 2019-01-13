@@ -1,14 +1,14 @@
 function  plot_kontrolne_kocke(x0,y0,z0,T0, B,c, zac_barva, vmes_barva, kon_barva, pavza)
 %input:
-% x,y,z             vektorji, ki doloèajo zaèetno kocko
-% T0                izhodišèe kocke
+% x,y,z             vektorji, ki dolocajo zacetno kocko
+% T0                izhodidce kocke
 % B                 matrika n x 4, v kateri so kontrolni kvaternioni kot 
 %                   vrstice
 % c                 translacijska funkcija
 % barve             kake barve naj bodo kontrolni kvadri
 % pavza             ali naj pavzira vmes
 %output:
-% nariše "kontroln kvadre" - to so kvadri, ki bi jih dobili s premikanjem
+% narise "kontroln kvadre" - to so kvadri, ki bi jih dobili s premikanjem
 % osnovnega z hi(Q_i), kjer je Q_i kontrolni kvaternion
 
 

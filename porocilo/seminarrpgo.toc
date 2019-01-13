@@ -9,4 +9,4 @@
 \contentsline {section}{\numberline {3}Implementacija}{9}
 \contentsline {subsection}{\numberline {3.1}Kvaternioni}{9}
 \contentsline {subsection}{\numberline {3.2}Kocka}{11}
-\contentsline {subsection}{\numberline {3.3}Razvrsti}{11}
+\contentsline {subsection}{\numberline {3.3}Razvrsti}{12}
