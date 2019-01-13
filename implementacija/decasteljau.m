@@ -7,9 +7,9 @@ function D = decasteljau (b,t)
 % D = decasteljau (b,t) 
 %
 % Vhodna podatka : 
-% b     seznam koordinat kontrolnih točk Bezierjeve krivulje
+% b     seznam koordinat kontrolnih tock Bezierjeve krivulje
 %       stopnje n,
-% t     parameter , pri katerem računamo koordinato
+% t     parameter , pri katerem racunamo koordinato
 %       Bezierjeve krivulje
 % 
 % Izhodni podatek : 
