@@ -1,4 +1,7 @@
 \babel@toc {slovene}{}
-\contentsline {section}{\numberline {1}Uvod}{3}
-\contentsline {subsection}{\numberline {1.1}Definicija}{3}
-\contentsline {section}{\numberline {2}Implementacija}{5}
+\contentsline {section}{\numberline {1}Uvod}{4}
+\contentsline {section}{\numberline {2}Teoreti\IeC {\v c}no ozadje}{4}
+\contentsline {subsection}{\numberline {2.1}Homogene in kartezi\IeC {\v c}ne koordinate}{4}
+\contentsline {subsection}{\numberline {2.2}Zveza med koordinatami to\IeC {\v c}k v fiksnem koordinatnem sistemu in koordinatami to\IeC {\v c}k v gibajo\IeC {\v c}em se koordinatnem sistemu}{4}
+\contentsline {subsection}{\numberline {2.3}Gibanje to\IeC {\v c}k v \IeC {\v c}asu}{5}
+\contentsline {section}{\numberline {3}Implementacija}{7}

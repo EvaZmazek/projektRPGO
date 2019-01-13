@@ -109,32 +109,168 @@ Fakulteta za matematiko in fiziko\\[5mm]}
 
 \cleardoublepage
 
-
-\section{Uvod}
-
 \tableofcontents
 
 \lstlistoflistings
 
-\subsection{Definicija}
+\newpage
 
-Imamo $2$ koordinatna sistema v $\R^3$:
+\section{Uvod}
+
+Z najino seminarsko bova prikazala, kako se da znanje, pridobljeno pri tem predmetu, uporabiti pri upodobitvi gibanja togih teles, ki se uporabljajo pri računalniških animacijah in v robotiki. Za opis teh gibanj bomo uporabljali kvaternione in bezierjeve krivulje na kvaternionih.
+
+\section{Teoretično ozadje}
+
+\subsection{Homogene in kartezične koordinate}
+
+Imejmo vektor $p$ v $3$-dimenzionalnem prostoru s homogenimi koordinatami $p = (p_0,p_1,p_2,p_3)^T \in \R^4 / \{(0,0,0,0)^T\}$. Če je prva komponenta $p_0$ neničelna, lahko za točko $p$ definiramo prirejene kartezične koordinate $\underline{p} = (\underline{p_1}, \underline{p_2}, \underline{p_3})^T \in \R^3$, pri čemer velja $\underline{p_i} = \frac{p_i}{p_0}$ za $i=1,2,3$. Na tak način vektorja $p$ in $\lambda p$ opisujeta isto točko $\underline{p}$ za poljubno neničelno realno število $\lambda$. Vektorjem z ničelno prvo komponento priredimo točke v neskončnosti.
+
+\subsection{Zveza med koordinatami točk v fiksnem koordinatnem sistemu in koordinatami točk v gibajočem se koordinatnem sistemu}
+
+Definirajmo dva koordinatna sistema v $\R^3$:
 \begin{itemize}
-\item fiksen koordinatni sistem $E^3$
+\item fiksen koordinatni sistem $E^3$ (običajen koordinatni sistem)
 \item gibajoč se koordinatni sistem $\hat{E}^3$
 \end{itemize}
 Točke lahko predstavimo v enem ali drugem.\\
 
-\noindent Označimp s $\underline{p}$ točko glede na fiksen koordinatni sistem $E^3$, s $\underline{\hat{p}}$ pa glede na $\hat{E}^3$. Potrebujemo koordinatno transformacijo
+\noindent Označimo s $\underline{p}$ točko glede na fiksen koordinatni sistem $E^3$, s $\underline{\hat{p}}$ pa glede na $\hat{E}^3$. Potrebujemo koordinatno transformacijo
 $$\hat{E}^3 \to E^3$$
-$$\underline{\hat{p}} \mapsto \underline{p} = \underline{c} + R \underline{\hat{p}}$$
+$$\underline{\hat{p}} \mapsto \underline{p}$$
 
-\noindent $\underline{c}$ predstavlja položaj izhodišča koordinatnega sistema $\hat{E}^3$ v koordinatni sistem $E^3$, $R$ pa je \textbf{rotacijska matrika}, ki opisuje rotacijo gibajočega se koordinatnega sistema. \\
+\noindent Z uporabo homogenih koordinat, lahko transformacijo zapišemo s pomočjo matrike
+
+$$M =
+\left[
+\begin{tabular}{c | c c c}
+$m_{0,0}$ & $0$ & $0$ & $0$ \\
+\hline
+$m_{1,0}$ & $m_{1,1}$ & $m_{1,2}$ & $m_{1,3}$ \\
+$m_{2,0}$ & $m_{2,1}$ & $m_{2,2}$ & $m_{2,3}$ \\
+$m_{3,0}$ & $m_{3,1}$ & $m_{3,2}$ & $m_{3,3}$ \\
+\end{tabular}
+\right],
+$$
+
+\noindent kjer velja $m_{0,0} \not=0$. Preslikavo lahko torej zapišemo kot:
+
+$$\underline{\hat{p}} \mapsto \underline{p} = M \underline{\hat{p}}$$
+
+\noindent Vektorju $c = M (1,0,0,0)^T = (m_{0,0}, m_{1,0}, m_{2,3}, m_{3,0})^T$ zapisanemu v homogenih koordinatah pripada vektor $\underline{c} = (\frac{m_{1,0}}{m_{0,0}}, \frac{m_{2,0}}{m_{0,0}}, \frac{m_{3,0}}{m_{0,0}})^T$, zapisan v kartezičnih koordinatah. Ta vektor opisuje položaj koordinatnega izhodišča gibajočega se koordinatnega sistema $\hat{E}^3$ glede na koordinatni sistem $E^3$.
+
+\noindent $3 \times 3$ matrika
+
+$$\underline{R} =
+\frac{1}{m_{0,0}}
+\left[
+\begin{tabular}{c c c}
+$m_{1,1}$ & $m_{1,2}$ & $m_{1,3}$ \\
+$m_{2,1}$ & $m_{2,2}$ & $m_{2,3}$ \\
+$m_{3,1}$ & $m_{3,2}$ & $m_{3,3}$ \\
+\end{tabular}
+\right]
+$$
+
+\noindent opisuje orientacijo gibajočega se koordinatnega sistema $\hat{E}^3$. Pravimo ji \textbf{rotacijska matrika}.
+
+%\noindent $\underline{c}$ predstavlja položaj izhodišča koordinatnega sistema $\hat{E}^3$ v koordinatni sistem $E^3$, $R$ pa je \textbf{rotacijska matrika}, ki opisuje rotacijo gibajočega se koordinatnega sistema. \\
+
+\noindent Oglejmo si, kaj naredi matrika $M$ z vektorjem $[1,b_M,c_M,d_M]$:
+
+$$M
+\cdot
+\left[
+\begin{tabular}{c}
+$1$ \\
+$b_M$ \\
+$c_M$ \\
+$d_M$
+\end{tabular}
+\right]
+=
+\left[
+\begin{tabular}{c}
+$m_{0,0}$ \\
+$m_{1,0}$ \\
+$m_{2,0}$ \\
+$m_{3,0}$ \\
+\end{tabular}
+\right]
++
+\left[
+\begin{tabular}{c c c}
+$0$ & $0$ & $0$ \\
+$m_{1,1} b_M$ & $m_{1,2} c_M$ & $m_{1,3} d_M$ \\
+$m_{2,1} b_M$ & $m_{2,2} c_M$ & $m_{2,3} d_M$ \\
+$m_{3,1} b_M$ & $m_{3,2} c_M$ & $m_{3,3} d_M$ \\
+\end{tabular}
+\right]
+$$
+
+\noindent Dobimo vektor v homogeni obliki, ki ima na prvi komponenti vrednost $m_{0,0}$, preostale tri komponente pa predstavlja vektor
+$$\left[
+\begin{tabular}{c}
+$m_{1,0}$ \\
+$m_{2,0}$ \\
+$m_{3,0}$ \\
+\end{tabular}
+\right]
++
+\left[
+\begin{tabular}{c c c}
+$m_{1,1}$ & $m_{1,2}$ & $m_{1,3}$ \\
+$m_{2,1}$ & $m_{2,2}$ & $m_{2,3}$ \\
+$m_{3,1}$ & $m_{3,2}$ & $m_{3,3}$ \\
+\end{tabular}
+\right]
+\cdot
+\left[
+\begin{tabular}{c}
+$b_M$ \\
+$c_M$ \\
+$d_M$
+\end{tabular}
+\right]
+$$
+
+Ker je to vektor v homogeni obliki in ker je prva komponenta neničelna ($m_{0,0} \not= 0$), je njemu prirejen vektor v kartezični obliki enak
+$$\frac{1}{m_{0,0}}\left[
+\begin{tabular}{c}
+$m_{1,0}$ \\
+$m_{2,0}$ \\
+$m_{3,0}$ \\
+\end{tabular}
+\right]
++
+\frac{1}{m_{0,0}}
+\left[
+\begin{tabular}{c c c}
+$m_{1,1}$ & $m_{1,2}$ & $m_{1,3}$ \\
+$m_{2,1}$ & $m_{2,2}$ & $m_{2,3}$ \\
+$m_{3,1}$ & $m_{3,2}$ & $m_{3,3}$ \\
+\end{tabular}
+\right]
+\cdot
+\left[
+\begin{tabular}{c}
+$b_M$ \\
+$c_M$ \\
+$d_M$
+\end{tabular}
+\right],
+$$
+
+\noindent ki pa je enak vsoti $\underline{c} + R \cdot \underline{\hat{p}}$ 
+
+\noindent Transformacijo $\underline{\hat{p}} \mapsto \underline{p}$ tako zapišemo kot:
+$$\underline{p} = M \cdot \underline{\hat{p}} = \underline{c} + R \underline{\hat{p}}$$
+
+\subsection{Gibanje točk v času}
 
 \noindent Kadar je $\underline{c} = \underline{c}(t)$ in $R=R(t)$, govorimo o gibanju togega telesa:
 $$\hat{E}^3 \times I \to E^3$$
 $$(\underline{\hat{p}},t) \mapsto \underline{c}(t) + R(t) \underline{\hat{p}} =: \underline{p}(t)$$
-$\underline{p}(t)$ je trajektorija točke $\underline{\hat{p}}$ \\
+Krivulji $\underline{p}(t)$ pravimo \textbf{trajektorija} točke $\underline{\hat{p}}$ \\
 
 \noindent Če je $\underline{c}(t) = (0,0,0)$, potem trajektorija poljubne točke $\underline{\hat{p}}$ leži na sferi z radijem $||\underline{\hat{p}}||$. \\
 
