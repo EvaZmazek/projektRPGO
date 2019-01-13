@@ -548,10 +548,27 @@ r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {risi\_kocko}]
+function risi_kocko(K, barva)
+% sprejme koordinate oglisc K (dobljene iz funkcije "kocka") in barvo
+% ter jo narise v figuro
 
+ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
+patch('Vertices', K, 'Faces', ploskve, 'FaceColor', barva);
+
+end
 \end{lstlisting}
 
+\begin{lstlisting}[caption = {}]
+function K1 = rotiraj_kocko(K0, kot_x, kot_y, kot_z)
+%zarotira kocko K0 za podane kote
+
+K1 = zeros(size(K0));
+for i = 1:8
+    K1(i,:) = quat_vec(rot_vek_za_kot(K0(i,:), kot_x, kot_y, kot_z));
+end
+end
+\end{lstlisting}
 
 \subsection{Razvrsti}
 
@@ -712,12 +729,30 @@ plot3(V_x(:,1), V_x(:,2), V_x(:,3),...
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {polepsaj\_sbezier}]
+function mat_Q = polepsaj_sbezier(Q)
+%spremeni celico Q v matriko mat_Q
 
+n = length(Q);
+mat_Q = zeros(n,4);
+for i = 1:n
+    mat_Q(i,:) = Q{i}{1};
+end
+
+end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {rot\_vek\_za\_kot}]
+function v = rot_vek_za_kot(vec, kot_x,kot_y,kot_z)
+%input:
+% vec                   3D vektor
+% kot_x,y,z             koti v x,y,z osi, za katere rotiramo vektor v
+%output:
+% v                     rotirani vektor
 
+q = angle2quat(kot_x, kot_y, kot_z);
+v = quatmultiply(q, quatmultiply([0 vec], conj_quat(q)));
+end
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {}]
