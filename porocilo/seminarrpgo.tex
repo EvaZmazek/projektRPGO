@@ -126,7 +126,7 @@ $\underline{p}(t)$ je trajektorija točke $\underline{\hat{p}}$ \\
 
 \noindent Rotacijski del gibanja $R(t)$ opisuje gibanje po enotski sferi, zato se imenuje tudi \textbf{sferični del gibanja togega telesa}. Problem je konstrukcija matrike $R$, ki mora biti ortogonalna. ($R R^T = R^T R = I$, $\det R = 1$). \\
 
-\noindent Pri opiisovanju rotacij si lahko pomagamo s \textbf{kvaternioni}. Prostor kvaternionov $\H$ je $4$-dimenzionalni vektorski prostor s standardno bazo
+\noindent Pri opisovanju rotacij si lahko pomagamo s \textbf{kvaternioni}. Prostor kvaternionov $\H$ je $4$-dimenzionalni vektorski prostor s standardno bazo
 $$ \underline{1} = (1, (0,0,0)^T) $$
 $$ \underline{i} = (0,(1,0,0)^T) $$
 $$ \underline{j} = (0,(0,1,0)^T) $$
@@ -136,12 +136,10 @@ $$ \underline{k} = (0,(0,0,1)^T) $$
 $$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underline{a} = (a_1,a_2,a_3)^T \text{ vektorski del}$$
 
 $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
-$$\mathcal{A} \cdot \mathcal{B}  = (a_0 b_0 - \underline{a} \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b}$$
+$$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
 
 \begin{definicija}
 Preslikava $\chi : \H \backslash \{0\} \to SO_3$ oblike
-
-$$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 
 $$Q  \mapsto \frac{1}{q_0^2 + q_1^2 + q_2^2 + q_3^2}
 \left[
@@ -154,6 +152,8 @@ $2(q_1 q_3 - q_0 q_2)$ & $2(q_2 q_3 + q_0 q_2)$ & $q_0^2 - q_1^2 - q_2^2 + q_3^2
 \end{tabular}
 \right]
 $$
+
+$$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 \\
 se imenuje \textbf{kinematična preslikava}.
 \end{definicija}
@@ -166,9 +166,9 @@ $$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$$
 
 \noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$.
 
-\noindent Z uporabo konematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje.
+\noindent Z uporabo kinematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje.
 
-\noindent Izberemo kontrolne kvaternione $a_0,a_1,\dots,a_n$
+\noindent Izberemo kontrolne kvaternione $Q_0,Q_1,\dots,Q_n$
 $$Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$$
 $$\chi(Q(t)) = R(t)$$
 
