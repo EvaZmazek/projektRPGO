@@ -1,10 +1,10 @@
 function c = translacija(w, Q, t)
 %input:
-% w                 translacijska funkcija izhodišèa, raèunana na t,
+% w                 translacijska funkcija izhodisca, racunana na t,
 %                   n x 3 matrika
-% Q                 sferièna rotacijska Bez krivulja, raèunana na t,
+% Q                 sfericna rotacijska Bez krivulja, racunana na t,
 %                   n x 4 matrika
-% t                 n parametrov, pri katerih raèunamo funkcijo
+% t                 n parametrov, pri katerih racunamo funkcijo
 %output:
 % c                 normirana translacija, matrika n x 3
 
