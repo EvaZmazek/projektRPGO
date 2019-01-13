@@ -14,7 +14,7 @@ K = kocka_vek(x0,y0,z0, T0);
 
 % KVATERNIONI ZA OBRAÈANJE KOCKE
 Q0 = kot_v_kvat(0, [1,0,0]);
-Q1 = kot_v_kvat(pi/4, [1,0,0]);
+Q1 = kot_v_kvat(-pi/2, [1,0,0]);
 Q2 = kot_v_kvat(-pi/2, [0,0,1]);
 Q3 = kot_v_kvat(3*pi/4, [1,0,-1]);
 % to vse dela, èe ne obraèamo okoli y-osi
@@ -26,20 +26,21 @@ Q3 = kot_v_kvat(3*pi/4, [1,0,-1]);
 % Q2 = kot_v_kvat(-pi/2, [0,0,1]);
 % Q3 = kot_v_kvat(3*pi/4, [1,0,-1]);
 
-n = 15;
+n = 100;
 B = [Q0; Q1; Q2; Q3];
 t = linspace(0,1,n);
 
 mat_Q = polepsaj_sbezier(sbezier(B,t));
 %mat_Q = bezier(B,t);
 
-b0 = [0 0 0];
-b1 = [2 2 2];
-b2 = [4 4 4];
-b3 = [6 6 6];
+b0 = [-9 -9 -9];
+b1 = [6 2 5];
+b2 = [-8 6 9];
+b3 = [5 5 -5];
 B2 = [b0; b1; b2; b3];
-c = bezier(B2,t);
-
+w = bezier(B2,t); % premik izhodišèa
+c = translacija(w, mat_Q, t); % normiran premik izhodišèa
+%ni najlepše napisano, potrebni argumenti so zelo specifièni
 
 
 % RISANJE SFERIÈNEGA PREMIKANJA 
@@ -63,20 +64,21 @@ for i = 1:n
         risi_kocko(kocka_vek(x, y, z, c(i,:)), [(n-i)/n, 0, i/n]);
     end
 end
-X = zeros(n);
-Y = zeros(n);
-Z = zeros(n);
-for i = 1:n
-    diag_p = sum(P{i});
-    ci = c(i,:);
-    X(i) = diag_p(1)+ci(1);
-    Y(i) = diag_p(2)+ci(2);
-    Z(i) = diag_p(3)+ci(3);
-end
-plot3(X,Y,Z)
-plot3(c(:,1), c(:,2), c(:,3))
+% X = zeros(n);
+% Y = zeros(n);
+% Z = zeros(n);
+% for i = 1:n
+%     diag_p = sum(P{i});
+%     ci = c(i,:);
+%     X(i) = diag_p(1)+ci(1);
+%     Y(i) = diag_p(2)+ci(2);
+%     Z(i) = diag_p(3)+ci(3);
+% end
+% plot3(X,Y,Z)
+
 plot_tirnice(P,c)
-scatter3(B(:,1), B(:,2), B(:,3),'g');
+%scatter3(B(:,1), B(:,2), B(:,3),'g');
+plot3(c(:,1), c(:,2), c(:,3),'LineWidth', 2, 'Color', 'k')
 
 % RISANJE POLIGONA
 
