@@ -127,6 +127,8 @@ Imejmo vektor $p$ v $3$-dimenzionalnem prostoru s homogenimi koordinatami $p = (
 
 \subsection{Zveza med koordinatami točk v fiksnem koordinatnem sistemu in koordinatami točk v gibajočem se koordinatnem sistemu}
 
+\label{zvezaFiksnikoor-Gibajockoor}
+
 Definirajmo dva koordinatna sistema v $\R^3$:
 \begin{itemize}
 \item fiksen koordinatni sistem $E^3$ (običajen koordinatni sistem)
@@ -152,7 +154,7 @@ $m_{3,0}$ & $m_{3,1}$ & $m_{3,2}$ & $m_{3,3}$ \\
 \right],
 $$
 
-\noindent kjer velja $m_{0,0} \not=0$. Preslikavo lahko torej zapišemo kot:
+\noindent kjer velja $m_{0,0} \not=0$. Preslikavo v homogenih koordinatah lahko torej zapišemo kot:
 
 $$\underline{\hat{p}} \mapsto \underline{p} = M \underline{\hat{p}}$$
 
@@ -262,8 +264,8 @@ $$
 
 \noindent ki pa je enak vsoti $\underline{c} + R \cdot \underline{\hat{p}}$ 
 
-\noindent Transformacijo $\underline{\hat{p}} \mapsto \underline{p}$ tako zapišemo kot:
-$$\underline{p} = M \cdot \underline{\hat{p}} = \underline{c} + R \underline{\hat{p}}$$
+\noindent Transformacijo $\underline{\hat{p}} \mapsto \underline{p}$ v kartezičnih koordinatah zapišemo kot:
+$$\underline{p} = \underline{c} + R \underline{\hat{p}}$$
 
 \subsection{Gibanje točk v času}
 
@@ -272,7 +274,7 @@ $$\hat{E}^3 \times I \to E^3$$
 $$(\underline{\hat{p}},t) \mapsto \underline{c}(t) + R(t) \underline{\hat{p}} =: \underline{p}(t)$$
 Krivulji $\underline{p}(t)$ pravimo \textbf{trajektorija} točke $\underline{\hat{p}}$ \\
 
-\noindent Če je $\underline{c}(t) = (0,0,0)$, potem trajektorija poljubne točke $\underline{\hat{p}}$ leži na sferi z radijem $||\underline{\hat{p}}||$.
+\noindent Če je $\underline{c}(t) = (0,0,0)$, potem trajektorija poljubne točke $\underline{\hat{p}}$ leži na sferi z radijem $||\underline{\hat{p}}||$ in središčem v koordinatnem izhodišču fiksnega koordinatnega sistema $E^3$.
 \noindent Rotacijski del gibanja $R(t)$ opisuje gibanje po enotski sferi, zato se imenuje tudi \textbf{sferični del gibanja togega telesa}. Problem je konstrukcija matrike $R$, ki mora biti ortogonalna. ($R R^T = R^T R = I$, $\det R = 1$). \\
 
 \subsection{Opis rotacij s kvaternioni}
@@ -288,6 +290,8 @@ $$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underl
 \noindent Na kvaternionih sta definirana seštevanje in množenje kot:
 $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
 $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
+
+\noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$.
 
 \begin{definicija}
 \label{definicijarotacije}
@@ -310,14 +314,60 @@ $$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 se imenuje \textbf{kinematična preslikava}.
 \end{definicija}
 
-\noindent Matika $\chi(Q)$ je rotacijska matrika.
-
-\noindent Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
+\noindent Matika $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
 $$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
 $$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$$
 
-\noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$.
+\noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$. \\
 
+\noindent Ker velja $q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$, so vrednosti $|q_i|;~ i=0,1,2,3$ na zaprtem interalu med $0$ in $1$. Vrednost $q_0$ in vektor $(q_1,q_2,q_3)^T$ lahko zato zapišemo v obliki:
+
+$$q_0 = \cos(\frac{\phi}{2})$$
+
+in
+
+$$\left[
+\begin{tabular}{c}
+$q_1$ \\
+$q_2$ \\
+$q_3$
+\end{tabular}
+\right]
+=
+\sin(\frac{\phi}{2}) \cdot \vec{r}; ~ \vec{r} \text{ enotski vektor}
+$$
+
+\noindent Če kvaternion $Q$ zapišemo v tej obliki, ima rotacija, prirejena temu kvaternionu lepo geometrijsko interpretacijo. Predstavlja namreč rotacijo za kot $\phi$ okrog osi $\vec{r}$. \\
+
+\noindent Ker lahko vsako rotacijo zapišemo v tej obliki, lahko tako zapišemo tudi rotacijo iz poglavja \ref{zvezaFiksnikoor-Gibajockoor}. Če imamo podano preslikavo $M$, poiščimo, kako za to preslikavo definiramo kvaternion $Q$. Priemerjajmo matriki $\R$ in poglavja \ref{zvezaFiksnikoor-Gibajockoor} in $\R$, zapisanega s kvaternioni.
+
+\begin{align*}
+m_{0,0} + m_{1,1} + m_{1,2} + m_{3,3} &= 4 q_0^2 \\
+m_{3,2} - m_{2,3} = 2 \cdot (q_2 q_3 - q_0 q_1) - 2 \cdot (q_2 q_3 + q_0 q_1) &= 4 q_0 q_1 \\
+m_{1,3} - m_{3,1} = 2 \cdot (q_1 q_3 + q_0 q_2) - 2 \cdot (q_1 q_3 + q_0 q_2) &= 4 q_0 q_2 \\
+m_{2,1} - m_{1,2} = 2 \cdot (q_1 q_2 + q_0 q_4) - 2 \cdot (q_1 q_2 + q_0 q_4) &= 4 q_0 q_3 \\
+& \\
+m_{3,2} - m_{2,3} & = 4 q_0 q_1 \\
+m_{0,0} + m_{1,1} - m_{1,2} - m_{3,3} &= 4 q_1^2 \\
+m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
+m_{1,3} + m_{3,1} &= 4 q_1 q_3 \\
+& \\
+m_{1,3} - m_{3,1} &= 4 q_0 q_2 \\
+m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
+m_{0,0} - m_{1,1} + m_{1,2} - m_{3,3} &= 4 q_2^2 \\
+m_{3,2} + m_{2,3} &= 4 q_2 q_3 \\
+& \\
+m_{2,1} - m_{1,2} &= 4 q_0 q_3 \\
+m_{1,3} + m_{3,1} &= 4 q_1 q_3 \\
+m_{3,2} + m_{2,3} &= 4 q_2 q_3 \\
+m_{0,0} - m_{1,1} - m_{1,2} + m_{3,3} &= 4 q_0^2 \\
+\end{align*}
+
+\noindent Opazimo, da v vsakem sklopu razmerja med vrednostmi enaka
+$$ q_0 : q_1 : q_2 : q_3 $$
+
+\noindent Ker $q_0,q_1,q_2,q_3$ niso hkrati enaki $0$, bo vsaj eno izmed zgornjih razmerij različno od $0 : 0 : 0 : 0$. Tisto razmerje nato uporabimo kot razmerje $ q_0 : q_1 : q_2 : q_3 $. Skupaj z enakostjo $q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$ nato izračunamo kvaternion $Q=(q_0,q_1,q_2,q_3)^T$ (bolj natančno sta v množici rešitev dva antipodna kvaterniona).
+\subsection{Bezierjeve krivulje}
 \noindent Z uporabo kinematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje.
 
 \noindent Izberemo kontrolne kvaternione $Q_0,Q_1,\dots,Q_n$
@@ -329,6 +379,7 @@ $$\chi(Q(t)) = R(t)$$
 \section{Implementacija}
 
 Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva jih najprej prevedla iz seznama v vektorsko obliko:
+
 
 \begin{lstlisting}
 function Q = array2quat(a, b, c, d)

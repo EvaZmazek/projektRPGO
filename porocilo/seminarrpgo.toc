@@ -5,4 +5,5 @@
 \contentsline {subsection}{\numberline {2.2}Zveza med koordinatami to\IeC {\v c}k v fiksnem koordinatnem sistemu in koordinatami to\IeC {\v c}k v gibajo\IeC {\v c}em se koordinatnem sistemu}{4}
 \contentsline {subsection}{\numberline {2.3}Gibanje to\IeC {\v c}k v \IeC {\v c}asu}{5}
 \contentsline {subsection}{\numberline {2.4}Opis rotacij s kvaternioni}{6}
-\contentsline {section}{\numberline {3}Implementacija}{7}
+\contentsline {subsection}{\numberline {2.5}Bezierjeve krivulje}{8}
+\contentsline {section}{\numberline {3}Implementacija}{8}
