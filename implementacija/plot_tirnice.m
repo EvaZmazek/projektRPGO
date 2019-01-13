@@ -3,7 +3,7 @@ function plot_tirnice(P, c)
 % P                 premaknjeni vektorji kvadra
 % c                 translacijska funkcija
 %ouput:
-% nariše "tirnice", po katerih se premikajo oglišèa kvadra
+% narise "tirnice", po katerih se premikajo oglisca kvadra
 
 n = size(c, 1);
 
