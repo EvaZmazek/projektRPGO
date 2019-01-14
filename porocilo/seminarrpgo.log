@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.10)  14 JAN 2019 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.10)  14 JAN 2019 19:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -881,15 +881,15 @@ File: ts1fvm.fd 2004/09/07 scalable font definitions for TS1/fvm.
 LaTeX Font Info:    Font shape `TS1/fvm/m/n' will be
 (Font)              scaled to size 10.20007pt on input line 456.
  [9] [10] [11]
-[12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+[12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22]
-[23] [24] [25] (./seminarrpgo.aux) ) 
+ [23]
+[24] [25] [26] (./seminarrpgo.aux) ) 
 Here is how much of TeX's memory you used:
  16219 strings out of 492649
  296808 string characters out of 6129622
- 532649 words of memory out of 5000000
+ 532992 words of memory out of 5000000
  19765 multiletter control sequences out of 15000+600000
  17149 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -914,10 +914,10 @@ ocal/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on seminarrpgo.pdf (25 pages, 264752 bytes).
+Output written on seminarrpgo.pdf (26 pages, 264902 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 165 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

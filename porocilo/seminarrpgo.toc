@@ -8,6 +8,6 @@
 \contentsline {subsection}{\numberline {2.5}Bezierjeve krivulje}{8}
 \contentsline {section}{\numberline {3}Implementacija}{9}
 \contentsline {subsection}{\numberline {3.1}Kvaternioni}{9}
-\contentsline {subsection}{\numberline {3.2}Bezierjeve krivulje}{12}
-\contentsline {subsection}{\numberline {3.3}Kocka}{15}
-\contentsline {subsection}{\numberline {3.4}Razvrsti}{17}
+\contentsline {subsection}{\numberline {3.2}Bezierjeve krivulje}{13}
+\contentsline {subsection}{\numberline {3.3}Kocka}{17}
+\contentsline {subsection}{\numberline {3.4}Razvrsti}{20}

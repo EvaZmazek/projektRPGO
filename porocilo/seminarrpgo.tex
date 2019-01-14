@@ -564,6 +564,27 @@ end
 
 \newpage
 
+\textbf{Rotacija vektorja okrog koordinatnih osi:}\\
+Input:
+\begin{itemize}
+\item vektor $vec$
+\item koti $kot\_x$, $kot\_y$, $kot\_z$ rotacije okrog $x$,$y$,$z$ osi
+\end{itemize}
+Output:
+\begin{itemize}
+\item zarotiran vektor $v$
+\end{itemize}
+
+\begin{lstlisting}[caption = {rot\_vek\_za\_kot}]
+function v = rot_vek_za_kot(vec, kot_x,kot_y,kot_z)
+
+q = angle2quat(kot_x, kot_y, kot_z);
+v = quatmultiply(q, quatmultiply([0 vec], conj_quat(q)));
+end
+\end{lstlisting}
+
+\newpage
+
 \subsection{Bezierjeve krivulje}
 
 \textbf{Bezier:}\\
@@ -693,6 +714,57 @@ end
 end
 \end{lstlisting}
 
+\vspace{1cm}
+\textbf{Translacija izhodišča:}\\
+Input:
+\begin{itemize}
+\item translacijska funkcija izhodišča $w$, računana na $t$ ($n \times 3$ matrika)
+\item sferična rotacijska Bezierjeva krivulja, računana na t ($n \times 4$ matrika)
+\item seznam parametrov $t$ dolžine $n$, pri katerih računamo funkcijo.
+\end{itemize}
+Output:
+\begin{itemize}
+\item normirana translacija ($n \times 3$ matrika)
+\end{itemize}
+
+\begin{lstlisting}[caption = {translacija}]
+function c = translacija(w, Q, t)
+
+n = length(t);
+c = zeros(n,3);
+
+for i = 1:n
+    nQt = norm(Q(i,:))^2;
+    c(i,:) = w(i,:)/nQt;
+end
+end
+\end{lstlisting}
+
+\newpage
+
+\textbf{Celotno gibanje togega telesa:}\\
+Input:
+\begin{itemize}
+\item matrika kontrolnih kvaternionov $Q$ za sferične rotacije
+\item matrika kontrolnih točk za Bezierjevo krivuljo gibanja izhodišča
+\item seznam parametrov $t$, pri katerih opazujemo gibanje
+\end{itemize}
+Output:
+\begin{itemize}
+\item matrika kvaternionov $mat_Q$, ki določajo sferične rotacije
+\item Bezierjeva krivulja $w$, ki določa gibanje koordinatnega izhodišča
+\item normirana translacijska funkcija $c$
+\end{itemize}
+
+\begin{lstlisting}[caption = {izracunaj\_vse}]
+function [mat_Q,w,c] = izracunaj_vse(Q, B, t)
+
+mat_Q = polepsaj_sbezier(sbezier(Q,t));
+w = bezier(B,t);
+c = translacija(w,mat_Q, t);
+end
+\end{lstlisting}
+
 \newpage
 
 \subsection{Kocka}
@@ -804,32 +876,24 @@ end
 
 \newpage
 
-\subsection{Razvrsti}
 
-\textbf{:}\\
+\textbf{Gibanje kocke:}\\
 Input:
 \begin{itemize}
-\item 
+\item vektorji $x$,$y$ in $z$, i določajo začetno kocko.
+\item izhodišče kocke $T0$
+\item matrika $B$ kontrolnih kvaternionov
+\item translacijska funkcija $c$ izhodišča gibajočega se koordinatnega sistema
+\item barve $zac\_barva$, $vmes_barva$, $kon_barva$ kontrolnih kvadrov
+\item argument $pavza$, ki pove, ali naj slika poteka v obliki gibanja
 \end{itemize}
 Output:
 \begin{itemize}
-\item 
+\item slika gibanja kvadra
 \end{itemize}
 
-\begin{lstlisting}[caption = {\color{green} plot\_kontrolne\_kocke}]
+\begin{lstlisting}[caption = {plot\_kontrolne\_kocke}]
 function  plot_kontrolne_kocke(x0,y0,z0,T0, B,c, zac_barva, vmes_barva, kon_barva, pavza)
-%input:
-% x,y,z             vektorji, ki dolocajo zacetno kocko
-% T0                izhodidce kocke
-% B                 matrika n x 4, v kateri so kontrolni kvaternioni kot 
-%                   vrstice
-% c                 translacijska funkcija
-% barve             kake barve naj bodo kontrolni kvadri
-% pavza             ali naj pavzira vmes
-%output:
-% narise "kontroln kvadre" - to so kvadri, ki bi jih dobili s premikanjem
-% osnovnega z hi(Q_i), kjer je Q_i kontrolni kvaternion
-
 
 for i = 1:size(B,1)
     if pavza
@@ -852,6 +916,9 @@ for i = 1:size(B,1)
     risi_kocko(kocka_vek(x, y, z, T),barva);
 end
 \end{lstlisting}
+
+\newpage
+\subsection{Razvrsti}
 
 \textbf{:}\\
 Input:
@@ -917,29 +984,10 @@ plot3(V_x(:,1), V_x(:,2), V_x(:,3),...
 end
 \end{lstlisting}
 
-\textbf{:}\\
-Input:
-\begin{itemize}
-\item 
-\end{itemize}
-Output:
-\begin{itemize}
-\item 
-\end{itemize}
 
-\begin{lstlisting}[caption = {\color{green} rot\_vek\_za\_kot}]
-function v = rot_vek_za_kot(vec, kot_x,kot_y,kot_z)
-%input:
-% vec                   3D vektor
-% kot_x,y,z             koti v x,y,z osi, za katere rotiramo vektor v
-%output:
-% v                     rotirani vektor
+\newpage
 
-q = angle2quat(kot_x, kot_y, kot_z);
-v = quatmultiply(q, quatmultiply([0 vec], conj_quat(q)));
-end
-\end{lstlisting}
-
+\newpage
 \begin{lstlisting}[caption = {\color{green} slerp}]
 function Q = slerp(Q1, Q2, t)
 %input:
@@ -967,67 +1015,6 @@ else
         Q = quatmultiply(Q1, quat_exp(quatmultiply(quat_exp(Q1,-1),Q2),t));
     end
 end
-end
-\end{lstlisting}
-
-\textbf{:}\\
-Input:
-\begin{itemize}
-\item 
-\end{itemize}
-Output:
-\begin{itemize}
-\item 
-\end{itemize}
-
-\begin{lstlisting}[caption = {\color{green} translacija}]
-function c = translacija(w, Q, t)
-%input:
-% w                 translacijska funkcija izhodisca, racunana na t,
-%                   n x 3 matrika
-% Q                 sfericna rotacijska Bez krivulja, racunana na t,
-%                   n x 4 matrika
-% t                 n parametrov, pri katerih racunamo funkcijo
-%output:
-% c                 normirana translacija, matrika n x 3
-
-n = length(t);
-c = zeros(n,3);
-
-for i = 1:n
-    nQt = norm(Q(i,:))^2;
-    c(i,:) = w(i,:)/nQt;
-end
-end
-\end{lstlisting}
-
-\textbf{:}\\
-Input:
-\begin{itemize}
-\item 
-\end{itemize}
-Output:
-\begin{itemize}
-\item 
-\end{itemize}
-
-\begin{lstlisting}[caption = {\color{green} izracunaj\_vse}]
-function [mat_Q,w,c] = izracunaj_vse(Q, B, t)
-%Tole bo izracunalo vse za en premik
-%input:
-% Q                     matrika kontrolnih kvaternionov za sfericne
-%                       rotacije
-% B                     matrika kontrolnih tock za Bezierjevo krivuljo
-%                       izhodisca
-% t                     parametri, pri katerih racunamo
-%output:
-% mat_Q                 matrika kvaternionov, ki dolocajo sfericne rotacije
-% w                     Bezierjeva krivulja premika koordinatnega izhodisca
-% c                     normirana translacijska funkcija
-
-mat_Q = polepsaj_sbezier(sbezier(Q,t));
-w = bezier(B,t);
-c = translacija(w,mat_Q, t);
 end
 \end{lstlisting}
 
