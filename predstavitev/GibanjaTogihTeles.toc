@@ -1,1 +1,2 @@
 \babel@toc {slovene}{}
+\beamer@subsectionintoc {0}{1}{Bezierjeve krivulje}{16}{0}{0}
