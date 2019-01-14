@@ -19,7 +19,5 @@
 \contentsline {lstlisting}{\numberline {19}rotirana\_kocka}{18}
 \contentsline {lstlisting}{\numberline {20}plot\_kontrolne\_kocke}{19}
 \contentsline {lstlisting}{\numberline {21}\color {green} plot\_tirnice}{20}
-\contentsline {lstlisting}{\numberline {22}\color {green} slerp}{22}
+\contentsline {lstlisting}{\numberline {22}\color {green} slerp}{21}
 \contentsline {lstlisting}{\numberline {23}\color {green} narisi\_vse}{22}
-\contentsline {lstlisting}{\numberline {24}\color {green} main}{24}
-\contentsline {lstlisting}{\numberline {25}For educational purposes}{25}
