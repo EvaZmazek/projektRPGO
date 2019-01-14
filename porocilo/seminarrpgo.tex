@@ -291,10 +291,11 @@ $$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underl
 $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
 $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
 
-\noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$.
+\noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$. S pomočjo konjugirane vrednosti nato definiramo tudi normo kvaterniona kot
+$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = a_0^2 + a_1^2 + a_2^2 + a_3^2$$
 
 \begin{opomba}[Implementirane metode]
-V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$.
+V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$. Za kvaternion $a$ normo izračunamo z ukazom $sum(a.^2)$.
 \end{opomba}
 
 \begin{definicija}
@@ -317,6 +318,8 @@ $$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 \\
 se imenuje \textbf{kinematična preslikava}.
 \end{definicija}
+
+\newpage
 
 \noindent Matika $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
 $$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
@@ -360,7 +363,8 @@ m_{3,2} - m_{2,3} & = 4 q_0 q_1 \\
 m_{0,0} + m_{1,1} - m_{1,2} - m_{3,3} &= 4 q_1^2 \\
 m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
 m_{1,3} + m_{3,1} &= 4 q_1 q_3 \\
-& \\
+\end{align*}
+\begin{align*}
 m_{1,3} - m_{3,1} &= 4 q_0 q_2 \\
 m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
 m_{0,0} - m_{1,1} + m_{1,2} - m_{3,3} &= 4 q_2^2 \\
@@ -397,77 +401,96 @@ $$\underline{c}(t) = \frac{w(t)}{||Q(t)||^2};~ w(t) := (w_1(t), w_2(t),w_3(t)).$
 \subsection{Kvaternioni}
 Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva na kvaternionih definirala naslednje funkcije:
 
-\begin{lstlisting}[caption = {\color{red} array2quat}]
-function Q = array2quat(a, b, c, d)
-%ARRAY2QUAT prejme 4 parametre, ki jih pretvori v kvaternion (vektorsko obliko)
-%input:
-%a, b, c, d     komponente   
-%output:
-%Q              kvaternion
+%\begin{lstlisting}[caption = {\color{red} array2quat}]
+%function Q = array2quat(a, b, c, d)
+%%ARRAY2QUAT prejme 4 parametre, ki jih pretvori v kvaternion (vektorsko obliko)
+%%input:
+%%a, b, c, d     komponente   
+%%output:
+%%Q              kvaternion
+%
+%Q = [a, b, c, d];
+%end
+%\end{lstlisting}
 
-Q = [a, b, c, d];
-end
-\end{lstlisting}
+\vspace{1cm}
+\textbf{Vektorski del kvaterniona:}\\
+Input:
+\begin{itemize}
+\item kvaternion $Q$ oblike $[q_0,q_1,q_2,q_3]$
+\end{itemize}
+Output:
+\begin{itemize}
+\item vektorski del $v$ ($q_1,q_2,q_3$) kvaterniona $Q$
+\end{itemize}
 
 \begin{lstlisting}[caption = {quat\_vec}]
 function v = quat_vec(Q)
-%QAUD_VEC poda vektorski del kvaterniona Q
-%input:
-%Q              kvaternion (q0, q1, q2, q3)
-%output:
-%v              vektorski komponenta Q-ja, (q1, q2, q3)
 
 v = [Q(2) Q(3) Q(4)];
 end
 \end{lstlisting}
 
+
+\vspace{1cm}
+\textbf{Množenje kvaternionov:}\\
+Input:
+\begin{itemize}
+\item kvaternion $a$ oblike $[a_1,a_2,a_3,a_4]$
+\item kvaternion $b$ oblike $[b_1,b_2,b_3,b_4]$
+\end{itemize}
+Output:
+\begin{itemize}
+\item kvaternion $c = a \cdot b$
+\end{itemize}
+
 \begin{lstlisting}[caption = {quatmultiply}]
 function c = quatmultiply(a,b)
-%QUATMULTIPLY izracuna produkt dveh kvaternionov, kot je opisano v teoreticnem delu
-%
-% Input:
-% a ... prvi kvaternion
-% b ... drugi kvaternion
-%
-% Output:
-% c ... produkt (nov kvaternion)
 
 c = zeros(1,4);
 a_s = a(1);
 b_s = b(1);
-
 a_v = quat_vec(a);
 b_v = quat_vec(b);
-
 c(1) = a_s * b_s - a_v * b_v';
 c_v = a_s * b_v + b_s * a_v + cross(a_v,b_v);
-
 c(2) = c_v(1);
 c(3) = c_v(2);
 c(4) = c_v(3);
 end
 \end{lstlisting}
 
+\textbf{Konjugirana vrednost kvaterniona:}\\
+Input:
+\begin{itemize}
+\item kvaternion $q$ oblike $[q_1,q_2,q_3,q_4]$
+\end{itemize}
+Output:
+\begin{itemize}
+\item kvaternion $Q = \overline{q}$
+\end{itemize}
+
 \begin{lstlisting}[caption = {conj\_quat}]
 function Q = conj_quat(q)
-%CONJ_QUAT vrne konjugirano vrednost podanega kvaterniona q
-%input:
-%q              kvaternion  
-%output:
-%Q              konjugiran qvaternion
 
 Q = [q(1), -q(2:4)];
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {\color{green} quat\_exp}]
+
+\vspace{0.5cm}
+\textbf{Potenca kvaterniona $q$:}\\
+Input:
+\begin{itemize}
+\item kvaternion $q$ oblike $[q_1,q_2,q_3,q_4]$
+\item eksponent $t$
+\end{itemize}
+Output:
+\begin{itemize}
+\item $q^t$
+\end{itemize}
+\begin{lstlisting}[caption = {quat\_exp}]
 function e = quat_exp(q, t)
-%QUAT_EXP vrne potenco z osnovo q (kvaternion) in eksponentom t
-%input:
-% q             kvaternion [a, b, c, d]
-% t             eksponent
-%output:
-% e             rezultat q^t
 
 if t==-1
     e = conj_quat(q)/norm(q);
@@ -476,19 +499,24 @@ else
     v = quat_vec(q);
     theta = acos(a/norm(q));
     n = v/norm(v);
-
     e = norm(q)^t*[cos(t*theta), n*sin(t*theta)];
 end
 \end{lstlisting}
 
+\vspace{1cm}
+
+\textbf{Rotacijska matrika:}\\
+Input:
+\begin{itemize}
+\item kvaternion $q$ oblike $[q_1,q_2,q_3,q_4]$
+\end{itemize}
+Output: 
+\begin{itemize}
+\item rotacijska matrika $H$ za sfericno gibanje
+\end{itemize}
+
 \begin{lstlisting}[caption = {quat\_rot\_mat}]
 function H = quat_rot_mat(Q)
-%QUAT_ROT_MAT oblikuje rotacijsko matriko, prirejeno kvaternionu Q
-%input:
-%Q          kvaternion
-%
-%output:
-%H          rotacijska matrika za sfericno gibanje
 
 H = zeros(3,3);
 h = sum(Q.^2);
@@ -510,20 +538,23 @@ else
 
     H = 1/h.*H;  
 end
-
 end
 \end{lstlisting}
 
+\vspace{1cm}
+\textbf{Kvaternion glede na rotacijo za kot $\phi$ okrog osti $e$:}\\
+Input:
+\begin{itemize}
+\item kot $fi$
+\item vektor osi $e$
+\end{itemize}
+Output:
+\begin{itemize}
+\item kvaternion $Q$
+\end{itemize}
+
 \begin{lstlisting}[caption = {kot\_v\_kvat}]
 function r = kot_v_kvat(fi, e)
-%input:
-% fi            kot
-% e             vektor osi
-%output:
-% Q             kvaternion
-%
-% sprejme kot fi in os e ter vrne kvaternion, ki predstavlja rotacijo 
-% za kot fi okoli osi e
 
 e = e/norm(e);
 r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
@@ -533,6 +564,17 @@ end
 \newpage
 
 \subsection{Kocka}
+
+\vspace{1cm}
+\textbf{:}\\
+Input:
+\begin{itemize}
+\item 
+\end{itemize}
+Output:
+\begin{itemize}
+\item 
+\end{itemize}
 
 \begin{lstlisting}[caption = {\color{green} kocka}]
 function oglisca = kocka(T0, T1)
@@ -545,6 +587,17 @@ oglisca = [T0; T0+b; T0+a+b; T0+a; T0+c; T0+c+b; T0+a+b+c; T0+a+c];
 %ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
 end
 \end{lstlisting}
+
+\vspace{1cm}
+\textbf{:}\\
+Input:
+\begin{itemize}
+\item 
+\end{itemize}
+Output:
+\begin{itemize}
+\item 
+\end{itemize}
 
 \begin{lstlisting}[caption = {\color{green} kocka\_vek}]
 function oglisca = kocka_vek(X, Y, Z, T0)
@@ -559,6 +612,17 @@ oglisca = [T0; T0+Y; T0+X+Y; T0+X; T0+Z; T0+Z+Y; T0+X+Y+Z; T0+X+Z];
 end
 \end{lstlisting}
 
+\vspace{1cm}
+\textbf{:}\\
+Input:
+\begin{itemize}
+\item 
+\end{itemize}
+Output:
+\begin{itemize}
+\item 
+\end{itemize}
+
 \begin{lstlisting}[caption = {\color{green} risi\_kocko}]
 function risi_kocko(K, barva)
 % sprejme koordinate oglisc K (dobljene iz funkcije "kocka") in barvo
@@ -569,6 +633,17 @@ patch('Vertices', K, 'Faces', ploskve, 'FaceColor', barva);
 
 end
 \end{lstlisting}
+
+\vspace{1cm}
+\textbf{:}\\
+Input:
+\begin{itemize}
+\item 
+\end{itemize}
+Output:
+\begin{itemize}
+\item 
+\end{itemize}
 
 \begin{lstlisting}[caption = {\color{green} rotiraj\_kocko}]
 function K1 = rotiraj_kocko(K0, kot_x, kot_y, kot_z)
@@ -594,28 +669,22 @@ end
 \end{lstlisting}
 
 \newpage
-\subsection{Razvrsti}
+
+\subsection{Pomožne funkcije}
+
+\textbf{Bezier:}\\
+Input:
+\begin{itemize}
+\item matrika $B$ velikosti $(n+1) \times d$, ki predstavlja kontrolne točke Bezierjeve krivulje
+\item seznam parametrov $t$ dolzine $k$, pri katerih računamo vrednost Bezierjeve krivulje
+\end{itemize}
+Output:
+\begin{itemize}
+\item matrika $b$, ki predstavlja točke na Bezierjevi krivulji pri parametrih iz $t$
+\end{itemize}
 
 \begin{lstlisting}[caption = {bezier}]
 function b = bezier (B,t)
-% Opis :
-% bezier vrne tocke na Bezierjevi krivulji pri danih
-% parametrih
-%
-% Definicija :
-% b = bezier (B,t)
-%
-% Vhodna podatka :
-% B     matrika velikosti n+1 x d, ki predstavlja kontrolne
-%       tocke Bezierjeve krivulje stopnje n v
-%       d- dimenzionalnem prostoru ,
-% t     seznam parametrov dolzine k, pri katerih racunamo
-%       vrednost Bezierjeve krivulje
-%
-% Izhodni podatek :
-% b     matrika velikosti k x d, kjer i-ta vrstica
-%       predstavlja tocko na Bezierjevi krivulji pri
-%       parametru iz t na i- tem mestu
 
 [n,d] = size(B);
 k = length(t);
@@ -629,28 +698,20 @@ for i=1:k
 end
 \end{lstlisting}
 
+\vspace{1cm}
+\textbf{Decasteljau:}\\
+Input:
+\begin{itemize}
+\item seznam koordinat $b$ kontrolnih točk Bezierjeve krivulje stopnje $n$
+\item parameter $t$, pri katerem računamo koordinato Bezierjeve krivulje
+\end{itemize}
+Output:
+\begin{itemize}
+\item Casteljaujeva shema $D$
+\end{itemize}
 
 \begin{lstlisting}[caption = {decasteljau}]
 function D = decasteljau (b,t) 
-% Opis : 
-% decasteljau vrne shemo de Casteljaujevega postopka za dan 
-% seznam koordinat b pri danem parametru t 
-%
-% Definicija : 
-% D = decasteljau (b,t) 
-%
-% Vhodna podatka : 
-% b     seznam koordinat kontrolnih tock Bezierjeve krivulje
-%       stopnje n,
-% t     parameter , pri katerem racunamo koordinato
-%       Bezierjeve krivulje
-% 
-% Izhodni podatek : 
-% D     tabela velikosti n+1 x n+1, ki predstavlja de
-%       Casteljaujevo shemo za koordinate b pri parametru t
-%       ( element na mestu (1,n +1) je koordinata Bezierjeve
-%       krivulje pri parametru t, elementi na mestih (i,j)
-%       za i > n-j+2 so NaN )
 
 n = length(b);
 D = [b', NaN(n,n-1)];
@@ -661,6 +722,65 @@ for r=1:n
     end
 end
 \end{lstlisting}
+
+\newpage
+
+\textbf{sBezier:}\\
+Input:
+\begin{itemize}
+\item matrika $Q$ velikosti $(n+1) \times d$, ki predstavlja kontrolne točke Bezierjeve krivulje
+\item seznam parametrov $t$ dolzine $k$, pri katerih računamo vrednost Bezierjeve krivulje
+\end{itemize}
+Output:
+\begin{itemize}
+\item matrika $b$, ki predstavlja točke na Bezierjevi krivulji pri parametrih iz $t$
+\end{itemize}
+
+\begin{lstlisting}[caption = {sbezier}]
+function b = sbezier(Q,t)
+k = length(t);
+
+b = cell(k,1);
+
+for K = 1:k
+    decast = sdecasteljau(Q,t(K));
+    b{K} = decast(1,end);
+end
+b;
+\end{lstlisting}
+
+\vspace{0.5cm}
+\textbf{sDecasteljau:}\\
+Input:
+\begin{itemize}
+\item seznam koordinat $Q$ kontrolnih točk Bezierjeve krivulje stopnje $n$
+\item parameter $t$, pri katerem računamo koordinato Bezierjeve krivulje
+\end{itemize}
+Output:
+\begin{itemize}
+\item Casteljaujeva shema $D$
+\end{itemize}
+
+\begin{lstlisting}[caption = {sdecasteljau}]
+function D = sdecasteljau(Q,t)
+
+[n,m] = size(Q);
+n = n-1;
+D = cell(n+1, n+1);
+for i = 1:(n+1)
+    D{i,1} = Q(i,:);
+end
+for j=2:(n+1)
+    for i=1:(n+2-j)
+        D{i,j} = slerp(D{i,j-1},D{i+1,j-1},t);
+    end
+end
+end
+\end{lstlisting}
+
+\newpage
+
+\subsection{Razvrsti}
 
 \begin{lstlisting}[caption = {plot\_kontrolne\_kocke}]
 function  plot_kontrolne_kocke(x0,y0,z0,T0, B,c, zac_barva, vmes_barva, kon_barva, pavza)
@@ -778,80 +898,6 @@ q = angle2quat(kot_x, kot_y, kot_z);
 v = quatmultiply(q, quatmultiply([0 vec], conj_quat(q)));
 end
 \end{lstlisting}
-
-\begin{lstlisting}[caption = {sbezier}]
-function b = sbezier(Q,t)
-% Opis:
-%   bezier  vrne  tocke  na  Bezierjevi  krivulji  pri  danih
-%   parametrih
-%
-% Definicija:
-%   b = bezier(B,t)
-%
-% Vhodna  podatka:
-%   Q   matrika  velikosti n+1 x d, ki  predstavlja  kontrolne
-%       tocke  Bezierjeve  krivulje  stopnje n v
-%       d-dimenzionalnem  prostoru ,
-%   t   seznam  parametrov  dolzine k, pri  katerih  racunamo
-%       vrednost  Bezierjeve  krivulje
-%
-% Izhodni  podatek:
-%   b   matrika  velikosti k x d, kjer i-ta  vrstica
-%       predstavlja  tocko  na  Bezierjevi  krivulji  pri
-%       parametru  iz t na i-tem  mestu
-
-%[N, d] = size(B);
-%n = N-1;
-k = length(t);
-
-b = cell(k,1);
-
-for K = 1:k
-    decast = sdecasteljau(Q,t(K));
-    b{K} = decast(1,end);
-end
-b;
-\end{lstlisting}
-
-
-\begin{lstlisting}[caption = {sdecasteljau}]
-function D = sdecasteljau(Q,t)
-% Opis:
-%   decasteljau  vrne  shemo  de  Casteljaujevega  postopka  za dan
-%   seznam  koordinat Q pri  danem  parametru t
-%
-% Definicija:
-%   D = decasteljau(Q,t)
-%
-% Vhodna  podatka:
-%   Q   seznam  koordinat  kontrolnih  tock  Bezierjeve  krivulje
-%       stopnje n
-%   t   parameter , pri  katerem  racunamo  koordinato
-%       Bezierjeve  krivulje
-%
-% Izhodni  podatek:
-%   D   tabela  velikosti n+1 x n+1, ki  predstavlja  de
-%       Casteljaujevo  shemo  za  koordinate b pri  parametru t
-%       (element  na  mestu (1,n+1) je  koordinata  Bezierjeve
-%       krivulje  pri  parametru t, elementi  na  mestih (i,j)
-%       za i > n-j+2 so NaN)
-
-[n,m] = size(Q);
-n = n-1;
-D = cell(n+1, n+1);
-
-
-for i = 1:(n+1)
-    D{i,1} = Q(i,:);
-end
-for j=2:(n+1)
-    for i=1:(n+2-j)
-        D{i,j} = slerp(D{i,j-1},D{i+1,j-1},t);
-    end
-end
-end
-\end{lstlisting}
-
 
 \begin{lstlisting}[caption = {slerp}]
 function Q = slerp(Q1, Q2, t)
