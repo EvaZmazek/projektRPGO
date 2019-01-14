@@ -293,6 +293,10 @@ $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underli
 
 \noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$.
 
+\begin{opomba}[Implementirane metode]
+V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$.
+\end{opomba}
+
 \begin{definicija}
 \label{definicijarotacije}
 Preslikava $\chi : \H \backslash \{0\} \to SO_3$ oblike
@@ -338,6 +342,11 @@ $q_3$
 $$
 
 \noindent Če kvaternion $Q$ zapišemo v tej obliki, ima rotacija, prirejena temu kvaternionu lepo geometrijsko interpretacijo. Predstavlja namreč rotacijo za kot $\phi$ okrog osi $\vec{r}$. \\
+
+
+\begin{opomba}[Implementirane metode] V implementaciji rotacijsko matriko, prirejeno kvaternionu $a$ generiramo s funkcijo $quat\_rot\_mat(a)$. Če imamo podan kot $\phi$ in enotski vektor $r$, nam funkcija $kot\_v\_kvat(\phi,r)$ poda pripadajoč kvaternion.
+
+\end{opomba}
 
 \noindent Ker lahko vsako rotacijo zapišemo v tej obliki, lahko tako zapišemo tudi rotacijo iz poglavja \ref{zvezaFiksnikoor-Gibajockoor}. Če imamo podano preslikavo $M$, poiščimo, kako za to preslikavo definiramo kvaternion $Q$. Priemerjajmo matriki $\R$ in poglavja \ref{zvezaFiksnikoor-Gibajockoor} in $\R$, zapisanega s kvaternioni.
 
@@ -388,7 +397,7 @@ $$\underline{c}(t) = \frac{w(t)}{||Q(t)||^2};~ w(t) := (w_1(t), w_2(t),w_3(t)).$
 \subsection{Kvaternioni}
 Ker si pri opisovanju rotacij pomagamo s kvaternioni, sva na kvaternionih definirala naslednje funkcije:
 
-\begin{lstlisting}[caption = {array2quat}]
+\begin{lstlisting}[caption = {\color{red} array2quat}]
 function Q = array2quat(a, b, c, d)
 %ARRAY2QUAT prejme 4 parametre, ki jih pretvori v kvaternion (vektorsko obliko)
 %input:
@@ -414,7 +423,7 @@ end
 
 \begin{lstlisting}[caption = {quatmultiply}]
 function c = quatmultiply(a,b)
-%QUATMULTIPLY izracuna produkt dveh kvaternionov, kot je opisano v clanku
+%QUATMULTIPLY izracuna produkt dveh kvaternionov, kot je opisano v teoreticnem delu
 %
 % Input:
 % a ... prvi kvaternion
@@ -451,7 +460,7 @@ Q = [q(1), -q(2:4)];
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {quat\_exp}]
+\begin{lstlisting}[caption = {\color{green} quat\_exp}]
 function e = quat_exp(q, t)
 %QUAT_EXP vrne potenco z osnovo q (kvaternion) in eksponentom t
 %input:
@@ -505,33 +514,6 @@ end
 end
 \end{lstlisting}
 
-\subsection{Kocka}
-
-\begin{lstlisting}[caption = {kocka}]
-function oglisca = kocka(T0, T1)
-%Vrne kocko, definirano z diagonalo (TO,T1)
-a = [T1(1) - T0(1) 0 0];
-b = [0 T1(2) - T0(2) 0];
-c = [0 0 T1(3) - T0(3)];
-
-oglisca = [T0; T0+b; T0+a+b; T0+a; T0+c; T0+c+b; T0+a+b+c; T0+a+c];
-%ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
-end
-\end{lstlisting}
-
-\begin{lstlisting}[caption = {kocka\_vek}]
-function oglisca = kocka_vek(X, Y, Z, T0)
-%input:
-% x,y,z         vektorji stranic x,y,z stranic
-% T0            izhodisce
-%output:
-% oglisca       vsa oglisca kocke, ki se zacne v T0
-
-oglisca = [T0; T0+Y; T0+X+Y; T0+X; T0+Z; T0+Z+Y; T0+X+Y+Z; T0+X+Z];
-%ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
-end
-\end{lstlisting}
-
 \begin{lstlisting}[caption = {kot\_v\_kvat}]
 function r = kot_v_kvat(fi, e)
 %input:
@@ -548,7 +530,36 @@ r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {risi\_kocko}]
+\newpage
+
+\subsection{Kocka}
+
+\begin{lstlisting}[caption = {\color{green} kocka}]
+function oglisca = kocka(T0, T1)
+%Vrne kocko, definirano z diagonalo (TO,T1)
+a = [T1(1) - T0(1) 0 0];
+b = [0 T1(2) - T0(2) 0];
+c = [0 0 T1(3) - T0(3)];
+
+oglisca = [T0; T0+b; T0+a+b; T0+a; T0+c; T0+c+b; T0+a+b+c; T0+a+c];
+%ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {\color{green} kocka\_vek}]
+function oglisca = kocka_vek(X, Y, Z, T0)
+%input:
+% x,y,z         vektorji stranic x,y,z stranic
+% T0            izhodisce
+%output:
+% oglisca       vsa oglisca kocke, ki se zacne v T0
+
+oglisca = [T0; T0+Y; T0+X+Y; T0+X; T0+Z; T0+Z+Y; T0+X+Y+Z; T0+X+Z];
+%ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
+end
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {\color{green} risi\_kocko}]
 function risi_kocko(K, barva)
 % sprejme koordinate oglisc K (dobljene iz funkcije "kocka") in barvo
 % ter jo narise v figuro
@@ -559,7 +570,7 @@ patch('Vertices', K, 'Faces', ploskve, 'FaceColor', barva);
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {\color{green} rotiraj\_kocko}]
 function K1 = rotiraj_kocko(K0, kot_x, kot_y, kot_z)
 %zarotira kocko K0 za podane kote
 
@@ -570,7 +581,7 @@ end
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {rotirana\_kocka}]
+\begin{lstlisting}[caption = {\color{green} rotirana\_kocka}]
 function [K0, x0, y0, z0] = rotirana_kocka(x,y,z,Q)
 
 H = quat_rot_mat(Q);
@@ -582,9 +593,10 @@ K0 = kocka_vek(x0,y0,z0, [0 0 0]);
 end
 \end{lstlisting}
 
+\newpage
 \subsection{Razvrsti}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {bezier}]
 function b = bezier (B,t)
 % Opis :
 % bezier vrne tocke na Bezierjevi krivulji pri danih
@@ -618,7 +630,7 @@ end
 \end{lstlisting}
 
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {decasteljau}]
 function D = decasteljau (b,t) 
 % Opis : 
 % decasteljau vrne shemo de Casteljaujevega postopka za dan 
@@ -650,7 +662,7 @@ for r=1:n
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {plot\_kontrolne\_kocke}]
 function  plot_kontrolne_kocke(x0,y0,z0,T0, B,c, zac_barva, vmes_barva, kon_barva, pavza)
 %input:
 % x,y,z             vektorji, ki dolocajo zacetno kocko
@@ -687,7 +699,7 @@ for i = 1:size(B,1)
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {}]
+\begin{lstlisting}[caption = {plot\_tirnice}]
 function plot_tirnice(P, c)
 %input:
 % P                 premaknjeni vektorji kvadra
@@ -1050,30 +1062,6 @@ narisi_vse(x0,y0,z0,T0, mat_QQQ,ccc,t, os, 1, 1, 1)
 % [mat_skuQ, skuw, skuc] = izracunaj_vse(skupaj_Q,skupaj_B,linspace(0,1,N));
 % narisi_vse(x0,y0,z0,T0, mat_skuQ,skuc,linspace(0,1,N), os, 1, 1, 1)
 \end{lstlisting}
-
-\noindent Ker sva rotacijo želela izraziti s kotom $\phi$ in osjo $\vec{r}$, sva definirala funkcijo, ki kot $\phi$ in enotski vektor $e$, ki leži na osi $r$, pretvori v ustrezen kvaternion $Q$.
-
-\begin{lstlisting}[caption = {For educational purposes}]
-function r = kot_v_kvat(fi, e)
-%input:
-% fi            kot
-% e             vektor osi
-%output:
-% Q             kvaternion
-%
-% sprejme kot fi in os e ter vrne kvaternion, ki predstavlja rotacijo 
-% za kot fi okoli osi e
-
-e = e/norm(e);
-r = [cos(fi/2) sin(fi/2)*e(1) sin(fi/2)*e(2) sin(fi/2)*e(3)];
-end
-\end{lstlisting}
-
-
-
-
-
-
 
 
 \begin{lstlisting}[caption = {For educational purposes}]

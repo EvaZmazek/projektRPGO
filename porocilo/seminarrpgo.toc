@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {2.3}Gibanje to\IeC {\v c}k v \IeC {\v c}asu}{5}
 \contentsline {subsection}{\numberline {2.4}Opis rotacij s kvaternioni}{6}
 \contentsline {subsection}{\numberline {2.5}Bezierjeve krivulje}{8}
-\contentsline {section}{\numberline {3}Implementacija}{9}
-\contentsline {subsection}{\numberline {3.1}Kvaternioni}{9}
-\contentsline {subsection}{\numberline {3.2}Kocka}{11}
-\contentsline {subsection}{\numberline {3.3}Razvrsti}{13}
+\contentsline {section}{\numberline {3}Implementacija}{10}
+\contentsline {subsection}{\numberline {3.1}Kvaternioni}{10}
+\contentsline {subsection}{\numberline {3.2}Kocka}{13}
+\contentsline {subsection}{\numberline {3.3}Razvrsti}{15}
