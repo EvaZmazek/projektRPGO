@@ -136,6 +136,11 @@ Definirajmo dva koordinatna sistema v $\R^3$:
 \end{itemize}
 Točke lahko predstavimo v enem ali drugem.\\
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{koordinatnasistema}
+\end{figure}
+
 \noindent Označimo s $\underline{p}$ točko glede na fiksen koordinatni sistem $E^3$, s $\underline{\hat{p}}$ pa glede na $\hat{E}^3$. Potrebujemo koordinatno transformacijo
 $$\hat{E}^3 \to E^3$$
 $$\hat{p} \mapsto p$$
@@ -292,7 +297,7 @@ $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + 
 $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
 
 \noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$. S pomočjo konjugirane vrednosti nato definiramo tudi normo kvaterniona kot
-$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = a_0^2 + a_1^2 + a_2^2 + a_3^2$$
+$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = \sqrt{a_0^2 + a_1^2 + a_2^2 + a_3^2}$$
 
 \begin{opomba}[Implementirane metode]
 V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$. Za kvaternion $a$ normo izračunamo z ukazom $sum(a.^2)$.
@@ -318,8 +323,6 @@ $$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 \\
 se imenuje \textbf{kinematična preslikava}.
 \end{definicija}
-
-\newpage
 
 \noindent Matika $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
 $$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
@@ -363,8 +366,7 @@ m_{3,2} - m_{2,3} & = 4 q_0 q_1 \\
 m_{0,0} + m_{1,1} - m_{1,2} - m_{3,3} &= 4 q_1^2 \\
 m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
 m_{1,3} + m_{3,1} &= 4 q_1 q_3 \\
-\end{align*}
-\begin{align*}
+& \\
 m_{1,3} - m_{3,1} &= 4 q_0 q_2 \\
 m_{2,1} + m_{1,2} &= 4 q_1 q_2 \\
 m_{0,0} - m_{1,1} + m_{1,2} - m_{3,3} &= 4 q_2^2 \\
@@ -820,7 +822,7 @@ Output:
 \item slika kocke
 \end{itemize}
 
-\begin{lstlisting}[caption = {risi\_kocko}]
+\begin{lstlisting}[caption = {\color{red} risi\_kocko}]
 function risi_kocko(K, barva)
 
 ploskve = [1 2 3 4; 2 6 7 3; 4 3 7 8; 1 5 8 4; 1 2 6 5; 5 6 7 8]; 
@@ -892,7 +894,7 @@ Output:
 \item slika gibanja kvadra
 \end{itemize}
 
-\begin{lstlisting}[caption = {plot\_kontrolne\_kocke}]
+\begin{lstlisting}[caption = {\color{red} plot\_kontrolne\_kocke}]
 function  plot_kontrolne_kocke(x0,y0,z0,T0, B,c, zac_barva, vmes_barva, kon_barva, pavza)
 
 for i = 1:size(B,1)
@@ -930,7 +932,7 @@ Output:
 \item 
 \end{itemize}
 
-\begin{lstlisting}[caption = {\color{green} plot\_tirnice}]
+\begin{lstlisting}[caption = {\color{red} plot\_tirnice}]
 function plot_tirnice(P, c)
 %input:
 % P                 premaknjeni vektorji kvadra
@@ -1025,7 +1027,7 @@ Output:
 \item 
 \end{itemize}
 
-\begin{lstlisting}[caption = {\color{green} narisi\_vse}]
+\begin{lstlisting}[caption = {\color{red} narisi\_vse}]
 function narisi_vse(x0,y0,z0,T0, mat_Q,c, t, osi, prehod,tirnice,robovi)
 %Tole bo narisalo vse
 %input:

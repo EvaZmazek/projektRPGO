@@ -70,6 +70,11 @@ Definirajmo dva koordinatna sistema v $\R^3$:
 \end{itemize}
 Točke lahko predstavimo v enem ali drugem.\\
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{koordinatnasistema}
+\end{figure}
+
 \end{frame}
 
 \begin{frame}
@@ -284,18 +289,22 @@ $$\hat{E}^3 \times I \to E^3$$
 $$(\underline{\hat{p}},t) \mapsto \underline{c}(t) + R(t) \underline{\hat{p}} =: \underline{p}(t)$$
 Krivulji $\underline{p}(t)$ pravimo \textbf{trajektorija} točke $\underline{\hat{p}}$ \\
 
-\noindent Če je $\underline{c}(t) = (0,0,0)$, potem trajektorija poljubne točke $\underline{\hat{p}}$ leži na sferi z radijem $||\underline{\hat{p}}||$ in središčem v koordinatnem izhodišču fiksnega koordinatnega sistema $E^3$.
-\noindent Rotacijski del gibanja $R(t)$ opisuje gibanje po enotski sferi, zato se imenuje tudi \textbf{sferični del gibanja togega telesa}. Problem je konstrukcija matrike $R$, ki mora biti ortogonalna. ($R R^T = R^T R = I$, $\det R = 1$). \\
+\begin{itemize}
+\item Če je $c(t)=(0,0,0)^T$, se točka $\underline{\hat{p}}$ giblje po sferi z radije $||\underline{\hat{p}}||$
+\item $R(t)$ se imenuje tudi \textbf{sferični del gibanja togega telesa}
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Opis rotacij s kvaternioni}
-\noindent Pri opisovanju rotacij si lahko pomagamo s \textbf{kvaternioni}. Prostor kvaternionov $\H$ je $4$-dimenzionalni vektorski prostor s standardno bazo
+\begin{definicija}
+Prostor kvaternionov $\H$ je $4$-dimenzionalni vektorski prostor s standardno bazo
 $$ \underline{1} = (1, (0,0,0)^T) $$
 $$ \underline{i} = (0,(1,0,0)^T) $$
 $$ \underline{j} = (0,(0,1,0)^T) $$
 $$ \underline{k} = (0,(0,0,1)^T) $$
+\end{definicija}
 
 \noindent Vsak kvaternion $\mathcal{A}$ lahko zapišemo kot:
 $$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underline{a} = (a_1,a_2,a_3)^T \text{ vektorski del}$$
@@ -303,18 +312,27 @@ $$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underl
 \end{frame}
 
 \begin{frame}
-\noindent Na kvaternionih sta definirana seštevanje in množenje kot:
-$$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
-$$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
+\frametitle{operacije na kvaternionih}
 
-\noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$. S pomočjo konjugirane vrednosti nato definiramo tudi normo kvaterniona kot
-$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = a_0^2 + a_1^2 + a_2^2 + a_3^2$$
+$$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
+\vspace{0.5cm}
+$$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
+\vspace{0.5cm}
+$$\overline{\mathcal{A}} = (a_0, - \underline{a})$$
+\vspace{0.5cm}
+$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = \sqrt{a_0^2 + a_1^2 + a_2^2 + a_3^2}$$
+
+\end{frame}
+
+\begin{frame}
 
 \begin{definicija}
 \label{definicijarotacije}
 Preslikava $\chi : \H \backslash \{0\} \to SO_3$ oblike
 
-$$Q  \mapsto \frac{1}{q_0^2 + q_1^2 + q_2^2 + q_3^2}
+
+
+$$Q  \mapsto \frac{1}{||Q||^2}
 \left[
 \begin{tabular}{c c c}
 $q_0^2 + q_1^2 - q_2^2 - q_3^2$ & $2(q_1 q_2 - q_0 q_3)$ & $2(q_1 q_3 + q_0 q_2)$ \\
@@ -334,20 +352,23 @@ se imenuje \textbf{kinematična preslikava}.
 \end{frame}
 
 \begin{frame}
-\noindent Matirka $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
+
+\begin{itemize}
+\item matrika $\chi(Q)$ je rotacijska matrika
+\item vsako rotacijsko matriko $R$ lahko preslikamo v dva \textbf{antipodna kvaterniona} oblike
 $$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
 $$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$$
-
-\noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$. \\
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}
-\noindent Ker velja $q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$, so vrednosti $|q_i|;~ i=0,1,2,3$ na zaprtem interalu med $0$ in $1$. Vrednost $q_0$ in vektor $(q_1,q_2,q_3)^T$ lahko zato zapišemo v obliki:
+\frametitle{Geometrijska interpretacija}
+\noindent Vrednost $q_0$ in vektor $(q_1,q_2,q_3)^T$ lahko zato zapišemo v obliki:
 
 $$q_0 = \cos(\frac{\phi}{2})$$
 
-in
+\vspace{0.5cm}
 
 $$\left[
 \begin{tabular}{c}
@@ -360,13 +381,14 @@ $q_3$
 \sin(\frac{\phi}{2}) \cdot \vec{r}; ~ \vec{r} \text{ enotski vektor}
 $$
 
-\noindent Če kvaternion $Q$ zapišemo v tej obliki, ima rotacija, prirejena temu kvaternionu lepo geometrijsko interpretacijo. Predstavlja namreč rotacijo za kot $\phi$ okrog osi $\vec{r}$. \\
+\vspace{1cm}
+\noindent Kvaternion $Q$ predstavlja rotacijo za kot $\phi$ okrog osi $\vec{r}$. \\
 
 \end{frame}
 
 \begin{frame}
 
-\noindent Ker lahko vsako rotacijo zapišemo v tej obliki, lahko tako zapišemo tudi rotacijo iz poglavja \ref{zvezaFiksnikoor-Gibajockoor}. Če imamo podano preslikavo $M$, poiščimo, kako za to preslikavo definiramo kvaternion $Q$. Priemerjajmo matriki $\R$ in poglavja \ref{zvezaFiksnikoor-Gibajockoor} in $\R$, zapisanega s kvaternioni.
+\frametitle{Prirejanje kvaterniona podani matriki $M$}
 
 \begin{align*}
 m_{0,0} + m_{1,1} + m_{1,2} + m_{3,3} &= 4 q_0^2 \\
@@ -395,81 +417,22 @@ m_{3,2} + m_{2,3} &= 4 q_2 q_3 \\
 m_{0,0} - m_{1,1} - m_{1,2} + m_{3,3} &= 4 q_0^2 \\
 \end{align*}
 
-\noindent Opazimo, da v vsakem sklopu razmerja med vrednostmi enaka
+\noindent Razmerja:
 $$ q_0 : q_1 : q_2 : q_3 $$
 
 \end{frame}
 
 \begin{frame}
-\noindent Ker $q_0,q_1,q_2,q_3$ niso hkrati enaki $0$, bo vsaj eno izmed zgornjih razmerij različno od $0 : 0 : 0 : 0$. Tisto razmerje nato uporabimo kot razmerje $ q_0 : q_1 : q_2 : q_3 $. Skupaj z enakostjo $q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$ nato izračunamo kvaternion $Q=(q_0,q_1,q_2,q_3)^T$ (bolj natančno sta v množici rešitev dva antipodna kvaterniona).
 \subsection{Bezierjeve krivulje}
 \noindent Z uporabo kinematične preslikave lahko za konstrukcijo sferičnih gibanj uporabimo Bezierjeve krivulje. Izberemo kontrolne kvaternione $Q_0,Q_1,\dots,Q_n$.
 $$Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$$
 \noindent Bezierjeva krivulja $Q(t)$ v času $t$ opiše kvaternion, ki mu priredimo rotacijo $R(t)$:
 $$\chi(Q(t)) = R(t)$$
 
-\noindent Rotacija, ki je določena z Bezierjevo krivuljo $Q(t) = \sum\limits_{i=0}^{n} Q_i B_i^n(t)$ stopnje $n$, je sferično razionalno gibanje stopnje $2n$. \\
-
-\end{frame}
-
-\begin{frame}
 \noindent Gibanje koordinatnega izhodišča zapišemo v obliki
 $$\underline{c}(t) = \frac{w(t)}{||Q(t)||^2};~ w(t) := (w_1(t), w_2(t),w_3(t)).$$
+($w(t)$ lahko podamo kot Bezierjevo krivuljo)
 
 \end{frame}
 
-
-% For every picture that defines or uses external nodes, you'll have to
-% apply the 'remember picture' style. To avoid some typing, we'll apply
-% the style to all pictures.
-\tikzstyle{every picture}+=[remember picture]
-
-% By default all math in TikZ nodes are set in inline mode. Change this to
-% displaystyle so that we don't get small fractions.
-\everymath{\displaystyle}
-
-\begin{frame}
-\frametitle{Rigid body dynamics}
-
-\tikzstyle{na} = [baseline=-.5ex]
-
-\begin{itemize}[<+-| alert@+>]
-    \item Coriolis acceleration
-        \tikz[na] \node[coordinate] (n1) {};
-\end{itemize}
-
-% Below we mix an ordinary equation with TikZ nodes. Note that we have to
-% adjust the baseline of the nodes to get proper alignment with the rest of
-% the equation.
-\begin{equation*}
-\vec{a}_p = \vec{a}_o+\frac{{}^bd^2}{dt^2}\vec{r} +
-        \tikz[baseline]{
-            \node[fill=blue!20,anchor=base] (t1)
-            {$ 2\vec{\omega}_{ib}\times\frac{{}^bd}{dt}\vec{r}$};
-        } +
-        \tikz[baseline]{
-            \node[fill=red!20, ellipse,anchor=base] (t2)
-            {$\vec{\alpha}_{ib}\times\vec{r}$};
-        } +
-        \tikz[baseline]{
-            \node[fill=green!20,anchor=base] (t3)
-            {$\vec{\omega}_{ib}\times(\vec{\omega}_{ib}\times\vec{r})$};
-        }
-\end{equation*}
-
-\begin{itemize}[<+-| alert@+>]
-    \item Transversal acceleration
-        \tikz[na]\node [coordinate] (n2) {};
-    \item Centripetal acceleration
-        \tikz[na]\node [coordinate] (n3) {};
-\end{itemize}
-
-% Now it's time to draw some edges between the global nodes. Note that we
-% have to apply the 'overlay' style.
-\begin{tikzpicture}[overlay]
-        \path[->]<1-> (n1) edge [bend left] (t1);
-        \path[->]<2-> (n2) edge [bend right] (t2);
-        \path[->]<3-> (n3) edge [out=0, in=-90] (t3);
-\end{tikzpicture}
-\end{frame}
 \end{document}
