@@ -297,7 +297,7 @@ $$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + 
 $$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
 
 \noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$. S pomočjo konjugirane vrednosti nato definiramo tudi normo kvaterniona kot
-$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = a_0^2 + a_1^2 + a_2^2 + a_3^2$$
+$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = \sqrt{a_0^2 + a_1^2 + a_2^2 + a_3^2}$$
 
 \begin{opomba}[Implementirane metode]
 V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$. Za kvaternion $a$ normo izračunamo z ukazom $sum(a.^2)$.
