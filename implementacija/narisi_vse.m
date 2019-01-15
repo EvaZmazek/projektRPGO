@@ -1,4 +1,4 @@
-function narisi_vse(x0,y0,z0,T0, mat_Q,c, t, osi, prehod,tirnice,robovi)
+function narisi_vse(x0,y0,z0,T0, mat_Q,c, t, osi, prehod,tirnice,robovi, pavza)
 %Tole bo narisalo vse
 %input:
 % x0,y0,z0                  stranice kvadra
@@ -8,6 +8,7 @@ function narisi_vse(x0,y0,z0,T0, mat_Q,c, t, osi, prehod,tirnice,robovi)
 % t                         parametri, pri katerih racunamo
 % osi                       dolzine osi
 % prehod, tirnice, robovi   1 ali 0, kaj hocemo risati
+% pavza                     1 ali 0, ce hocemo pavzirati
 n = length(t);
 
 H = cell(n,1);
@@ -18,7 +19,14 @@ axis([-osi osi -osi osi -osi osi])
 
 % Rise prehajanje kvadrov
 
+if nargin < 12
+    pavza = 0;
+end
+
 for i = 1:n
+    if pavza
+        pause
+    end
     H{i} = quat_rot_mat(mat_Q(i,:));
     x = (H{i}*x0')';
     y = (H{i}*y0')';
