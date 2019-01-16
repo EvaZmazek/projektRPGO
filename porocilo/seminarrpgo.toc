@@ -10,4 +10,3 @@
 \contentsline {subsection}{\numberline {3.1}Kvaternioni}{10}
 \contentsline {subsection}{\numberline {3.2}Bezierjeve krivulje}{14}
 \contentsline {subsection}{\numberline {3.3}Kocka}{18}
-\contentsline {subsection}{\numberline {3.4}Razvrsti}{21}

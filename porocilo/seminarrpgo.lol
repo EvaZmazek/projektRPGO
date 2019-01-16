@@ -14,10 +14,5 @@
 \contentsline {lstlisting}{\numberline {14}izracunaj\_vse}{17}
 \contentsline {lstlisting}{\numberline {15}kocka}{18}
 \contentsline {lstlisting}{\numberline {16}kocka\_vek}{18}
-\contentsline {lstlisting}{\numberline {17}\color {red} risi\_kocko}{19}
-\contentsline {lstlisting}{\numberline {18}rotiraj\_kocko}{19}
-\contentsline {lstlisting}{\numberline {19}rotirana\_kocka}{19}
-\contentsline {lstlisting}{\numberline {20}\color {red} plot\_kontrolne\_kocke}{20}
-\contentsline {lstlisting}{\numberline {21}\color {red} plot\_tirnice}{21}
-\contentsline {lstlisting}{\numberline {22}\color {green} slerp}{22}
-\contentsline {lstlisting}{\numberline {23}\color {red} narisi\_vse}{23}
+\contentsline {lstlisting}{\numberline {17}rotiraj\_kocko}{19}
+\contentsline {lstlisting}{\numberline {18}rotirana\_kocka}{19}
