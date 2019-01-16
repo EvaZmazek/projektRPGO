@@ -8,8 +8,8 @@ T0 = [0 0 0];
 K = kocka_vek(x0,y0,z0, T0);
 
 % rotacije
-fi = [0, pi/4, pi/2, 3*pi/4 3*pi/4 pi/2 pi/6 pi/3 pi/2];
-osi = [1 0 0; 1 0 0; 1 0 0; 1 0 0; 1 1 0; 1 1 0; -1 1 1; -1 1 1; -1 1 1];
+fi = 0:pi/6:2*pi;
+osi = ones(size(fi,2),3);
 
 N = length(fi);
 Q = zeros(length(fi),4);
@@ -22,7 +22,7 @@ end
 
 % translacija
 
-B = [-9 -9 -9; -6 8 10; -10 10 -10; 7 -5 -8; 8 -6 8];
+B = [-9 -9 -9; -3 -3 3 ;8 8 8];
 B0 = [0 0 0]; % samo za rotacijo
 
 
@@ -52,7 +52,7 @@ zlabel('z');
 scatter3(osi(:,1),osi(:,2), osi(:,3))
 
 [mat_Q, w, c] = izracunaj_vse(Q,B0,t);
-narisi_vse(x0,y0,z0,T0, mat_Q,c,t, meja, 1, 0, 0, 1)
+narisi_vse(x0,y0,z0,T0, mat_Q,c,t, meja, 0, 0, 0, 0)
 
 % pause
 % risi_kocko(rotirana_kocka(x0,y0,z0,Q(1,:)), 'y');
@@ -70,13 +70,20 @@ pause
 plotbezier(B,linspace(0,1,5*n));
 pause
 [mat_Q, w, c] = izracunaj_vse(Q,B,t);
-narisi_vse(x0,y0,z0,T0, mat_Q,c,t, 10, 1, 0, 1, 1)
+narisi_vse(x0,y0,z0,T0, mat_Q,c,t, 10, 1, 0, 1, 0)
 
 T = linspace(0,1,50);
 
 pause
+clf
 [mat_Q, w, c] = izracunaj_vse(Q,B,T);
 narisi_vse(x0,y0,z0,T0, mat_Q,c,T, 10, 1, 0, 0, 0)
+xlabel('x');
+ylabel('y');
+zlabel('z');
+plotbezier(B,linspace(0,1,5*n));
+pause
+narisi_vse(x0,y0,z0,T0, mat_Q,c,T, 10, 1, 1, 0, 0)
 
 % pause
 % clf
