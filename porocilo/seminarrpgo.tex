@@ -117,13 +117,13 @@ Fakulteta za matematiko in fiziko\\[5mm]}
 
 \section{Uvod}
 
-Z najino seminarsko bova prikazala, kako se da znanje, pridobljeno pri tem predmetu, uporabiti pri upodobitvi gibanja togih teles, ki se uporabljajo pri računalniških animacijah in v robotiki. Za opis teh gibanj bomo uporabljali kvaternione in bezierjeve krivulje na kvaternionih.
+S seminarsko nalogo bova prikazala, kako se da znanje, pridobljeno pri tem predmetu, uporabiti pri upodobitvi gibanja togih teles, ki se uporabljajo pri računalniških animacijah in v robotiki. Za opis teh gibanj bomo uporabljali kvaternione in bezierjeve krivulje na kvaternionih.
 
 \section{Teoretično ozadje}
 
 \subsection{Homogene in kartezične koordinate}
 
-Imejmo vektor $p$ v $3$-dimenzionalnem prostoru s homogenimi koordinatami $p = (p_0,p_1,p_2,p_3)^T \in \R^4 / \{(0,0,0,0)^T\}$. Če je prva komponenta $p_0$ neničelna, lahko za točko $p$ definiramo prirejene kartezične koordinate $\underline{p} = (\underline{p_1}, \underline{p_2}, \underline{p_3})^T \in \R^3$, pri čemer velja $\underline{p_i} = \frac{p_i}{p_0}$ za $i=1,2,3$. Na tak način vektorja $p$ in $\lambda p$ opisujeta isto točko $\underline{p}$ za poljubno neničelno realno število $\lambda$. Vektorjem z ničelno prvo komponento priredimo točke v neskončnosti.
+Naj bo $p$ vektor v $3$-dimenzionalnem prostoru s homogenimi koordinatami $p = (p_0,p_1,p_2,p_3)^T \in \R^4 / \{(0,0,0,0)^T\}$. Če je prva komponenta $p_0$ neničelna, lahko za točko $p$ definiramo prirejene kartezične koordinate $\underline{p} = (\underline{p_1}, \underline{p_2}, \underline{p_3})^T \in \R^3$, pri čemer velja $\underline{p_i} = \frac{p_i}{p_0}$ za $i=1,2,3$. Na tak način vektorja $p$ in $\lambda p$ opisujeta isto točko $\underline{p}$ za poljubno neničelno realno število $\lambda$. Vektorjem z ničelno prvo komponento priredimo točke v neskončnosti.
 
 \subsection{Zveza med koordinatami točk v fiksnem koordinatnem sistemu in koordinatami točk v gibajočem se koordinatnem sistemu}
 
@@ -143,7 +143,7 @@ Točke lahko predstavimo v enem ali drugem.\\
 
 \noindent Označimo s $\underline{p}$ točko glede na fiksen koordinatni sistem $E^3$, s $\underline{\hat{p}}$ pa glede na $\hat{E}^3$. Potrebujemo koordinatno transformacijo
 $$\hat{E}^3 \to E^3$$
-$$\hat{p} \mapsto p$$
+$$\hat{p} \mapsto p.$$
 
 \noindent Z uporabo homogenih koordinat, lahko transformacijo zapišemo s pomočjo matrike
 
@@ -311,17 +311,17 @@ Krivulji $\underline{p}(t)$ pravimo \textbf{trajektorija} točke $\underline{\ha
 $$ \underline{1} = (1, (0,0,0)^T) $$
 $$ \underline{i} = (0,(1,0,0)^T) $$
 $$ \underline{j} = (0,(0,1,0)^T) $$
-$$ \underline{k} = (0,(0,0,1)^T) $$
+$$ \underline{k} = (0,(0,0,1)^T). $$
 
-\noindent Vsak kvaternion $\mathcal{A}$ lahko zapišemo kot:
-$$\mathcal{A} = (a_0,\underline{a}),~ a_0 \in \R \text{ skalarni del },~ \underline{a} = (a_1,a_2,a_3)^T \text{ vektorski del}$$
+\noindent Vsak kvaternion $\mathcal{A}$ lahko zapišemo kot: $\mathcal{A} = (a_0,\underline{a})$,
+kjer rečemo, da sta $a_0 \in \R$ skalarni del in $\underline{a} = (a_1,a_2,a_3)^T$ vektorski del.
 
 \noindent Na kvaternionih sta definirana seštevanje in množenje kot:
-$$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b})$$
-$$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b})$$
+$$\mathcal{A} + \mathcal{B} = (a_0,\underline{a}) +(b_0,\underline{b}) = (a_0 + b_0,\underline{a} + \underline{b}),$$
+$$\mathcal{A} \cdot \mathcal{B}  = (a_0 \cdot b_0 - \underline{a} \cdot \underline{b}, a_0 \underline{b} + b_0 \underline{a} + \underline{a} \times \underline{b}).$$
 
 \noindent Konjugirana vrednost kvaretniona $\mathcal{A} = (a_0,\underline{a})$ je definirana kot $\overline{\mathcal{A}} = (a_0, - \underline{a})$. S pomočjo konjugirane vrednosti nato definiramo tudi normo kvaterniona kot
-$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = \sqrt{a_0^2 + a_1^2 + a_2^2 + a_3^2}$$
+$$|| \mathcal{A} || = \sqrt{\mathcal{A} \cdot \overline{\mathcal{A}}} = \sqrt{a_0^2 + a_1^2 + a_2^2 + a_3^2}.$$
 
 \begin{opomba}[Implementirane metode]
 V implementaciji vektorski del kvaterniona $a$ pridobimo s funkcijo $quat\_vec(a)$, sklararni del pa kar z ukazom $a(1)$. Kvaterniona $a$ in $b$ seštejemo z ukazom $a+b$, njun produkt pa kličemo s funkcjio $quatmultiply(a,b)$. Konjugirano vrednost kvaterniona $a$ pridobimo s klicom funkcije $conj\_quat(a)$. Za kvaternion $a$ normo izračunamo z ukazom $sum(a.^2)$.
@@ -348,9 +348,9 @@ $$ Q = (q_0,(q_1,q_2,q_3)^T)$$
 se imenuje \textbf{kinematična preslikava}.
 \end{definicija}
 
-\noindent Matika $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
+\noindent Matrika $\chi(Q)$ je rotacijska matrika. Velja pa tudi obratno. Vsako rotacijsko matriko $R$ lahko zapišemo v zgornji obliki, to je, lahko jo preslikamo v dva \textbf{antipodna kvaterniona} oblike
 $$\pm Q = \pm(q_0,(q_1,q_2,q_3)^T),$$
-$$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1$$
+$$q_0^2 + q_1^2 + q_2^2 + q_3^2 = 1.$$
 
 \noindent \textbf{Kinematična preslikava} poda korespondenco med 3D rotacijami in parom antipodnih točk na 4D enotski sferi $S^3 \subseteq R^4$. \\
 
@@ -368,7 +368,7 @@ $q_3$
 \end{tabular}
 \right]
 =
-\sin(\frac{\phi}{2}) \cdot \vec{r}; ~ \vec{r} \text{ enotski vektor}
+\sin(\frac{\phi}{2}) \cdot \vec{r}; ~ \vec{r} \text{ enotski vektor.}
 $$
 
 \noindent Če kvaternion $Q$ zapišemo v tej obliki, ima rotacija, prirejena temu kvaternionu lepo geometrijsko interpretacijo. Predstavlja namreč rotacijo za kot $\phi$ okrog osi $\vec{r}$.
@@ -377,7 +377,8 @@ $$
 
 \end{opomba}
 
-\noindent Ker lahko vsako rotacijo zapišemo v tej obliki, lahko tako zapišemo tudi rotacijo iz poglavja \ref{zvezaFiksnikoor-Gibajockoor}. Če imamo podano preslikavo $M$, poiščimo, kako za to preslikavo definiramo kvaternion $Q$. Priemerjajmo matriki $\R$ in poglavja \ref{zvezaFiksnikoor-Gibajockoor} in $\R$, zapisanega s kvaternioni.
+\noindent Ker lahko vsako rotacijo zapišemo v tej obliki, lahko tako zapišemo tudi rotacijo iz poglavja \ref{zvezaFiksnikoor-Gibajockoor}.
+Če imamo podano preslikavo $M$, poiščimo, kako za to preslikavo definiramo kvaternion $Q$. Priemerjajmo matriki $\R$ in poglavja \ref{zvezaFiksnikoor-Gibajockoor} in $\R$, zapisanega s kvaternioni.
 
 \begin{align*}
 m_{0,0} + m_{1,1} + m_{1,2} + m_{3,3} &= 4 q_0^2 \\
@@ -419,6 +420,27 @@ $$\underline{c}(t) = \frac{w(t)}{||Q(t)||^2};~ w(t) := (w_1(t), w_2(t),w_3(t)).$
 \begin{opomba}
 Za računanje Bezierjeve krivulje rotacije uporabimo funkciji $sbezier$ in $sdecasteljau$, za gibanje koordinatnega izhodišča pa $bezier$ in $decasteljau$.
 \end{opomba}
+
+\noindent Bezierjeve krivulje za rotacije računamo na sferi, zato pride do manjših zapletov z že znanimi postopki. 
+Pri De Casteljaujevem algoritmu se običajno naredi linearno interpolacijo $b = (1 - t) b_0 + t b_1$ za parameter $t$ med točkama $b_0$ in $b_1$,
+ker pa želimo gibanje po sferi in ne po premici med točkama, moramo uporabiti sferično linearno interpolacijo.
+
+\begin{definicija} {\bf Sferična linearna interpolacija}, znana tudi kot {\bf slerp}, je preslikava
+    $$
+        \text{slerp}(p_0, p_1, t) = \frac{\sin((1-t)\fi)}{\sin \fi} p_0 + \frac{\sin(t \fi)}{\sin \fi} p_1,
+    $$
+    kjer je $\fi$ kot med $p_0$ in $p_1$, da velja $\cos \fi = p_0 \cdot p_1$.
+    Slerp torej vrne točko na krožnem loku med točkama $p_0$ in $p_1$, ki ustreza parameteru $t$.
+\end{definicija}
+
+\noindent Sferično linearno interpolacijo lahko krajše zapišemo v kontekstu kvaternionov $q_0$ in $q_1$:
+\begin{align*}
+    \text{slerp}(q_0, q_1, t) &= q_0 (q_0^-1 q_1)^t \\
+    & = q_1 (q_1^-1 q_0)^{1-t}\\
+    & = (q_0 q_1^-1)^{1-t}q_1 \\
+    & = (q_1 q_0^-1)^t q_0. \\
+\end{align*}
+Pri računanju rotacije je bila uporabjena prva verzija formule.
 
 \newpage
 
