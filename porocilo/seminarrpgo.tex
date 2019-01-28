@@ -8,6 +8,7 @@
 \usepackage{graphicx}     % za slike
 \usepackage{emptypage}    % prazne strani so neoštevilčene, ampak so štete
 \usepackage{tikz}
+\usepackage{url}
 
 % oblika strani
 \usepackage[
@@ -425,7 +426,7 @@ Za računanje Bezierjeve krivulje rotacije uporabimo funkciji $sbezier$ in $sdec
 Pri De Casteljaujevem algoritmu se običajno naredi linearno interpolacijo $b = (1 - t) b_0 + t b_1$ za parameter $t$ med točkama $b_0$ in $b_1$,
 ker pa želimo gibanje po sferi in ne po premici med točkama, moramo uporabiti sferično linearno interpolacijo.
 
-\begin{definicija} {\bf Sferična linearna interpolacija}, znana tudi kot {\bf slerp}, je preslikava
+\begin{definicija} \cite{slerping} {\bf Sferična linearna interpolacija}, znana tudi kot {\bf slerp}, je preslikava
     $$
         \text{slerp}(p_0, p_1, t) = \frac{\sin((1-t)\varphi)}{\sin \varphi} p_0 + \frac{\sin(t \varphi)}{\sin \varphi} p_1,
     $$
@@ -1148,5 +1149,19 @@ end
 %end
 %end
 %\end{lstlisting}
+
+\begin{thebibliography}{99}
+%%%%%%%%%%%%%%%%%% ŽE UREJENA LITERATURA %%%%%%%%%%%%%%%%%%%
+
+\bibitem{glavnaKnjiga}
+G. Farin, J. Hoschek, M.-S. Kim, \emph{Handbook of Computer Aided Geometric Design}, verzija 2002, [ogled 10.~.1.~2019]
+
+\bibitem{clanekZaOsnovo}
+G. Jaklič, B. Jüttler, M. Krajnc,V. Vitrih, E. Žagar, \emph{Hermite interpolation by rational Gk motions of low degree}, Journal of Computational and Applied Mathematics, 2013, dostopno na \url{http://www.sciencedirect.com/science/article/pii/S0377042712003433}
+
+\bibitem{slerping}
+\emph{Slerp} v: Wikipedia, The Free Encyclopedia, [ogled 10.~.1.~2019], dostopno na \url{ https://en.wikipedia.org/wiki/Slerp}.
+
+\end{thebibliography}
 
 \end{document}

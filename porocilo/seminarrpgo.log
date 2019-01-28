@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.10)  27 JAN 2019 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.10)  28 JAN 2019 14:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,6 +463,10 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/03/24 v5.7 Page Geometry
 
@@ -682,7 +686,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 \sectionRuleOffset@mlpr=\skip51
 \toks@mlpr=\toks42
 )
-Package Listings Info: Made " a short reference for \lstinline on input line 42
+Package Listings Info: Made " a short reference for \lstinline on input line 43
 .
 \c@definicija=\count135
 \c@aksiom=\count136
@@ -690,25 +694,25 @@ Package Listings Info: Made " a short reference for \lstinline on input line 42
 (./seminarrpgo.aux)
 \openout1 = `seminarrpgo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 92.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 93.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 93.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    ... okay on input line 93.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -836,17 +840,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `seminarrpgo.lol'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
 <koordinatnasistema.jpg, id=20, 1712.3975pt x 776.9025pt>
 File: koordinatnasistema.jpg Graphic file (type jpg)
 <use koordinatnasistema.jpg>
-Package pdftex.def Info: koordinatnasistema.jpg  used on input line 141.
+Package pdftex.def Info: koordinatnasistema.jpg  used on input line 142.
 (pdftex.def)             Requested size: 320.0935pt x 145.21838pt.
 [4 <./koordinatnasistema.jpg>] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
 
@@ -854,7 +858,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 355--356
 Underfull \vbox (badness 4072) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
@@ -862,74 +866,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 415--416
 <slika1(dnkoblike).png, id=52, 423.5825pt x 432.61626pt>
 File: slika1(dnkoblike).png Graphic file (type png)
 <use slika1(dnkoblike).png>
-Package pdftex.def Info: slika1(dnkoblike).png  used on input line 453.
+Package pdftex.def Info: slika1(dnkoblike).png  used on input line 454.
 (pdftex.def)             Requested size: 192.0548pt x 196.14758pt.
 <slika2(tirnice).png, id=54, 455.7025pt x 460.72125pt>
 File: slika2(tirnice).png Graphic file (type png)
 <use slika2(tirnice).png>
-Package pdftex.def Info: slika2(tirnice).png  used on input line 455.
+Package pdftex.def Info: slika2(tirnice).png  used on input line 456.
 (pdftex.def)             Requested size: 192.0548pt x 194.16945pt.
 <slika3.png, id=55, 335.2525pt x 336.25626pt>
 File: slika3.png Graphic file (type png)
 <use slika3.png>
-Package pdftex.def Info: slika3.png  used on input line 459.
+Package pdftex.def Info: slika3.png  used on input line 460.
 (pdftex.def)             Requested size: 192.0548pt x 192.62752pt.
 <slika4.png, id=56, 323.2075pt x 311.1625pt>
 File: slika4.png Graphic file (type png)
 <use slika4.png>
-Package pdftex.def Info: slika4.png  used on input line 461.
+Package pdftex.def Info: slika4.png  used on input line 462.
 (pdftex.def)             Requested size: 192.0548pt x 184.89946pt.
  [10 <./slika1(dnkoblike).png> <./slika2(tirnice).png> <./slika3.png> <./slika4
 .png>]
-LaTeX Font Info:    Try loading font information for T1+fvm on input line 495.
+LaTeX Font Info:    Try loading font information for T1+fvm on input line 496.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/bera/t1fvm.fd
 File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 )
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 10.20007pt on input line 495.
-LaTeX Font Info:    Try loading font information for TS1+fvm on input line 523.
+(Font)              scaled to size 10.20007pt on input line 496.
+LaTeX Font Info:    Try loading font information for TS1+fvm on input line 524.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bera/ts1fvm.fd
 File: ts1fvm.fd 2004/09/07 scalable font definitions for TS1/fvm.
 )
 LaTeX Font Info:    Font shape `TS1/fvm/m/n' will be
-(Font)              scaled to size 10.20007pt on input line 523.
+(Font)              scaled to size 10.20007pt on input line 524.
  [11] [12]
-[13] [14] [15] [16] [17] [18] [19] [20] (./seminarrpgo.aux) ) 
+[13] [14] [15] [16] [17] [18] [19]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1160
+.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [20]
+(./seminarrpgo.aux) ) 
 Here is how much of TeX's memory you used:
- 16189 strings out of 492649
- 296769 string characters out of 6129622
- 449651 words of memory out of 5000000
- 19729 multiletter control sequences out of 15000+600000
- 16465 words of font info for 45 fonts, out of 8000000 for 9000
+ 16283 strings out of 492649
+ 298320 string characters out of 6129622
+ 450750 words of memory out of 5000000
+ 19814 multiletter control sequences out of 15000+600000
+ 17462 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,10n,54p,608b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texliv
-e/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-di
-st/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2018/texmf-dis
-t/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/bera/fvmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm
--super/sfbx1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-s
-uper/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-sup
-er/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super
-/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/s
-frm1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfr
-m2074.pfb>
-Output written on seminarrpgo.pdf (20 pages, 444686 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-sup
+er/cm-super-t1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.
+enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.e
+nc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on seminarrpgo.pdf (20 pages, 499136 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 164 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
